@@ -7,7 +7,7 @@
 
   var FALLBACK = {
     name: { ar: "مكه", en: "Makkah" },
-    role: { ar: "مساعدة مؤسسة كنف", en: "Kanaf assistant" },
+    role: { ar: "المساعد الذكي لموقع كنف", en: "Smart assistant for the Kanaf website" },
     avatar: { ar: "م", en: "M" },
     manager: {
       name: { ar: "المهندس محمد طلعت", en: "Eng. Mohamed Talat" },
@@ -35,12 +35,14 @@
       ar: {
         open: "افتح محادثة مكه", close: "إغلاق المحادثة", placeholder: "اكتب سؤالك…", send: "إرسال",
         typing: "مكه تكتب", managerLabel: "مدير المشروعات", contactLabel: "التواصل", addressLabel: "العنوان",
-        hoursLabel: "ساعات المعرض", phoneLabel: "الجوال", emailLabel: "البريد", quickLabel: "اقتراحات"
+        hoursLabel: "ساعات المعرض", phoneLabel: "الجوال", emailLabel: "البريد", quickLabel: "اقتراحات",
+        hello: "أهلاً", helloAria: "فقاعة ترحيب مكه"
       },
       en: {
         open: "Open Makkah chat", close: "Close chat", placeholder: "Type your question…", send: "Send",
         typing: "Makkah is typing", managerLabel: "Project Manager", contactLabel: "Contact", addressLabel: "Address",
-        hoursLabel: "Showroom hours", phoneLabel: "Mobile", emailLabel: "Email", quickLabel: "Suggestions"
+        hoursLabel: "Showroom hours", phoneLabel: "Mobile", emailLabel: "Email", quickLabel: "Suggestions",
+        hello: "Hi", helloAria: "Makkah greeting bubble"
       }
     },
     welcome: {
@@ -56,7 +58,21 @@
       { id: "whatsapp", label: { ar: "واتساب", en: "WhatsApp" }, href: "https://wa.me/966568646500" },
       { id: "email", label: { ar: "بريد", en: "Email" }, href: "mailto:Kanaf.S.Systems@gmail.com" }
     ],
-    intents: [],
+    intents: [
+      {
+        id: "identity",
+        keywords: [
+          "انت مين", "انتي مين", "حضرتك مين", "من انت", "من انتي", "عرفني بنفسك", "اسمك ايه",
+          "who are you", "what's your name", "who r u", "enta meen"
+        ],
+        reply: {
+          ar: ["أنا مكه، المساعد الذكي لموقع مؤسسة كنف. أقدر أوجهك للخدمة أو المعلومة اللي تدور عليها، وأنا مساعدة مدير المشروعات المهندس محمد طلعت."],
+          en: ["I'm Makkah, the smart assistant for the Kanaf website. I can guide you to the service or information you're looking for, and I'm the assistant to the project manager, Eng. Mohamed Talat."]
+        },
+        show: ["manager"],
+        actions: ["call", "whatsapp"]
+      }
+    ],
     fallback: {
       reply: {
         ar: ["تواصل مع مؤسسة كنف مباشرة عبر الاتصال أو واتساب على +966 56 864 6500."],
@@ -99,6 +115,52 @@
     if (latin > arabic && latin >= 3) return "en";
     if (arabic > latin && arabic >= 2) return "ar";
     return pageLang;
+  }
+
+  /* norm() يسيب مسافات حول النص، فمطابقة الكلمات بتكون بحدود مسافات
+     لأن \b في جافاسكريبت ما يعرفش الحروف العربية. */
+  function pad(q) { return " " + norm(q) + " "; }
+
+  function token(q, word) { return q.indexOf(" " + word + " ") !== -1; }
+
+  function anyToken(q, words) {
+    for (var i = 0; i < words.length; i++) if (token(q, words[i])) return true;
+    return false;
+  }
+
+  /* العربيزي (عربي مكتوب بحروف لاتينية) — يُرد عليه بالعربي لأنه نفس لغة السؤال. */
+  var ARABIZI = ["meen", "enta", "enti", "enty", "anta", "anti", "ismak", "ismik", "esmak",
+    "esmik", "ismk", "3arfni", "3arfeeni", "shukran", "mumkin", "3aiz", "3aiza", "3andak",
+    "keef", "kayfa", "aish", "esh", "3arbi", "3arabi", "yalla", "eh", "eih"];
+
+  /* سؤال الهوية عن «مكه» نفسها: «انت مين»، «عرفني بنفسك»، «who are you»، «who r u»…
+     منفصل تماماً عن «من أنتم» (عن المؤسسة) و«مين المدير» (عن المهندس محمد طلعت). */
+  var SELF = ["انت", "انتي", "انتي", "حضرتك", "حضرتكي", "you", "u",
+    "enta", "enti", "enty", "anta", "anti"];
+  var WHO = ["مين", "who", "whom", "من", "whos"];
+  var NAME = ["اسمك", "name", "ismak", "ismik", "esmak", "esmik", "ismk"];
+  var NAME_ASK = ["ما", "ايش", "ايه", "شو", "عرفني", "whats", "what", "wht", "ur", "your",
+    "tell", "know", "eh", "eih"];
+  var PLURAL = ["انتم", "انتوا", "guys", "yall"];
+
+  function isIdentity(text) {
+    var q = pad(text);
+    if (anyToken(q, PLURAL) || q.indexOf(" you all ") !== -1) return false;
+    if (anyToken(q, WHO) && anyToken(q, SELF)) return true;
+    if (anyToken(q, NAME) && anyToken(q, NAME_ASK)) return true;
+    /* «عرفني بنفسك» / «عرفينا بنفسك» / «عرف عن نفسك» */
+    if (q.indexOf("عرف") !== -1 && q.indexOf("نفسك") !== -1) return true;
+    return false;
+  }
+
+  function probeIdentity(pack, text) {
+    if (!isIdentity(text)) return null;
+    return findIntent(pack, "identity");
+  }
+
+  function detectLang(text) {
+    if (anyToken(pad(text), ARABIZI)) return "ar";
+    return replyLang(text);
   }
 
   function scriptSrc() {
@@ -193,8 +255,61 @@
     } catch (e) { /* private mode */ }
   }
 
-  function icon() {
-    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M7 17.5 4 21l.8-3.6A8 8 0 1 1 12 20a8.4 8.4 0 0 1-3.2-.6"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01"/></svg>';
+  /* حارسة الأمن «مكه» — بدل أيقونة فقاعة المحادثة.
+     شعار المؤسسة على الصدر هو الرمز الحقيقي #kanafEmblem الموجود في كل صفحات الموقع
+     (نفس الرمز الذي ينتجه scripts/build_pages.py)، بدون أي مكتبة خارجية. */
+  function guardSvg() {
+    return '' +
+    '<svg class="mk-guard" viewBox="0 0 120 140" aria-hidden="true" focusable="false">' +
+      '<ellipse class="mk-g-shadow" cx="60" cy="134" rx="29" ry="4.6"/>' +
+      '<g class="mk-g-legs">' +
+        '<path d="M47 98h12v27H47z" fill="#16233c"/>' +
+        '<path d="M61 98h12v27H61z" fill="#16233c"/>' +
+        '<rect x="43" y="123" width="18" height="9" rx="4" fill="#0e1216"/>' +
+        '<rect x="59" y="123" width="18" height="9" rx="4" fill="#0e1216"/>' +
+      '</g>' +
+      '<g class="mk-g-arm-back">' +
+        '<path d="M43 62q-11 3-13 17-1 9 1 15 3 5 8 1-3-8-2-15 1-10 8-13z" fill="#16233c"/>' +
+        '<circle cx="34" cy="97" r="5.4" fill="#e8b48c"/>' +
+      '</g>' +
+      '<g class="mk-g-head">' +
+        '<rect x="54" y="45" width="12" height="12" fill="#d9a077"/>' +
+        '<ellipse cx="43" cy="37" rx="3.2" ry="4.4" fill="#d9a077"/>' +
+        '<ellipse cx="77" cy="37" rx="3.2" ry="4.4" fill="#d9a077"/>' +
+        '<ellipse cx="60" cy="34" rx="17" ry="18" fill="#e8b48c"/>' +
+        '<g class="mk-g-look"><g class="mk-g-eyes">' +
+          '<ellipse cx="53" cy="38" rx="3.1" ry="3.6" fill="#14181c"/>' +
+          '<ellipse cx="67" cy="38" rx="3.1" ry="3.6" fill="#14181c"/>' +
+          '<circle cx="54.1" cy="36.7" r="1" fill="#fff"/>' +
+          '<circle cx="68.1" cy="36.7" r="1" fill="#fff"/>' +
+        '</g></g>' +
+        '<path d="M53 46q7 5 14 0" fill="none" stroke="#a9714f" stroke-width="2" stroke-linecap="round"/>' +
+        '<g class="mk-g-cap">' +
+          '<path d="M43 24q17-20 34 0z" fill="#1b2a4a"/>' +
+          '<rect x="41.5" y="21.5" width="37" height="6.5" rx="3.2" fill="#16233c"/>' +
+          '<path d="M38.5 27.5q21.5 8.5 43 0 1.2 4.2-3 5.3-18.5 5.2-37 0-4.2-1.1-3-5.3z" fill="#0e1216"/>' +
+          '<path d="M60 10.5l5.4 2.6-1 6.4-4.4 3.4-4.4-3.4-1-6.4z" fill="var(--green2,#63a97a)"/>' +
+        '</g>' +
+      '</g>' +
+      '<g class="mk-g-torso">' +
+        '<path d="M37 61q23-9 46 0l3 40q-26 7-52 0z" fill="#1b2a4a"/>' +
+        '<path d="M60 55l11 6-11 12-11-12z" fill="#243759"/>' +
+        '<path d="M37 61q23-9 46 0" fill="none" stroke="var(--green2,#63a97a)" stroke-width="3.4" stroke-linecap="round"/>' +
+        '<path d="M37 61l13-4 2 7-13 4z" fill="var(--green,#4f8c62)"/>' +
+        '<path d="M83 61l-13-4-2 7 13 4z" fill="var(--green,#4f8c62)"/>' +
+        '<rect x="39" y="90" width="42" height="6.5" rx="3.2" fill="#0e1216"/>' +
+        '<rect x="55" y="89" width="10" height="8.5" rx="2" fill="var(--green2,#63a97a)"/>' +
+        '<g class="mk-g-badge">' +
+          '<rect x="47" y="64" width="26" height="27" rx="5.5" fill="#f7f5f1" stroke="var(--green2,#63a97a)" stroke-width="1.6"/>' +
+          '<svg x="49.6" y="66.4" width="20.8" height="21.7" viewBox="0 0 240 250"><use href="#kanafEmblem"/></svg>' +
+        '</g>' +
+      '</g>' +
+      '<g class="mk-g-arm-wave">' +
+        '<path d="M77 62q12 1 16-8 4-9 2-18-1-5-6-4-5 1-4 6 1 8-2 12-4 5-9 5z" fill="#1b2a4a"/>' +
+        '<path d="M88 44q6-2 9-7l4 3q-4 6-10 8z" fill="var(--green2,#63a97a)"/>' +
+        '<circle cx="97" cy="34" r="5.8" fill="#e8b48c"/>' +
+      '</g>' +
+    '</svg>';
   }
 
   function boot(pack) {
@@ -205,7 +320,9 @@
     root.className = "mk-root";
     root.innerHTML =
       '<button class="mk-launcher" type="button" aria-expanded="false" aria-controls="mkPanel">' +
-        icon() + '<span class="mk-launcher-name"></span>' +
+        '<span class="mk-hello" aria-hidden="true"></span>' +
+        guardSvg() +
+        '<span class="mk-launcher-name"></span>' +
       "</button>" +
       '<section class="mk-panel" id="mkPanel" role="dialog" aria-modal="true" hidden>' +
         '<header class="mk-head">' +
@@ -234,6 +351,7 @@
     var title = root.querySelector("#mkTitle");
     var role = root.querySelector(".mk-id small");
     var avatar = root.querySelector(".mk-avatar");
+    var hello = root.querySelector(".mk-hello");
     var lastFocus = null;
 
     function ui(lang) { return (pack.ui && pack.ui[lang]) || pack.ui.ar; }
@@ -242,6 +360,7 @@
       var U = ui(lang);
       launcher.setAttribute("aria-label", U.open);
       root.querySelector(".mk-launcher-name").textContent = t(pack.name, lang);
+      hello.textContent = U.hello || (lang === "en" ? "Hi" : "أهلاً");
       title.textContent = t(pack.name, lang);
       role.textContent = t(pack.role, lang);
       avatar.textContent = t(pack.avatar, lang);
@@ -425,7 +544,7 @@
     function ask(text, intentId) {
       var clean = String(text || "").trim().slice(0, 500);
       if (!clean) return;
-      var lang = replyLang(clean);
+      var lang = detectLang(clean);
       if (lang !== uiLang) {
         uiLang = lang;
         paintChrome(lang);
@@ -434,7 +553,8 @@
       bubble("user", clean, null, lang);
       state.messages.push({ from: "user", text: clean, lang: lang });
       saveState(state);
-      var intent = (intentId && findIntent(pack, intentId)) || matchIntent(pack, clean) || pack.fallback;
+      var intent = (intentId && findIntent(pack, intentId)) || probeIdentity(pack, clean) ||
+        matchIntent(pack, clean) || pack.fallback;
       answer(intent, lang, clean);
       input.value = "";
     }
@@ -451,9 +571,40 @@
       });
     }
 
+    /* العينان والرأس يميلون نحو مؤشر الماوس — rAF واحد لكل إطار، وما يشتغلش على اللمس. */
+    function trackCursor() {
+      var guard = launcher.querySelector(".mk-guard");
+      if (!guard || !window.matchMedia || !window.requestAnimationFrame) return;
+      if (!window.matchMedia("(pointer: fine)").matches) return;
+      var pending = 0, px = 0, py = 0;
+      function apply() {
+        pending = 0;
+        if (launcher.hidden) return;
+        var r = guard.getBoundingClientRect();
+        if (!r.width || !r.height) return;
+        var nx = (px - (r.left + r.width / 2)) / (r.width / 2);
+        var ny = (py - (r.top + r.height * 0.28)) / (r.height / 2);
+        nx = Math.max(-1, Math.min(1, nx));
+        ny = Math.max(-1, Math.min(1, ny));
+        launcher.style.setProperty("--mk-ex", (nx * 3.4).toFixed(2) + "px");
+        launcher.style.setProperty("--mk-ey", (ny * 2.6).toFixed(2) + "px");
+        launcher.style.setProperty("--mk-hr", (nx * 6).toFixed(2) + "deg");
+      }
+      document.addEventListener("pointermove", function (e) {
+        px = e.clientX; py = e.clientY;
+        if (!pending) pending = window.requestAnimationFrame(apply);
+      }, { passive: true });
+      document.addEventListener("pointerleave", function () {
+        launcher.style.setProperty("--mk-ex", "0px");
+        launcher.style.setProperty("--mk-ey", "0px");
+        launcher.style.setProperty("--mk-hr", "0deg");
+      });
+    }
+
     paintChrome(pageLang);
     renderQuick(pageLang);
     restore();
+    trackCursor();
     if (state.open) setOpen(true);
 
     launcher.addEventListener("click", function () { setOpen(true); });
