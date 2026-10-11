@@ -1,0 +1,344 @@
+{
+  "_edit": "كل ردود شات بوت «مكه» وبيانات مدير المشروعات والتواصل تتعدل من هذا الملف فقط، بدون إعادة بناء الصفحات.",
+  "id": "makkah",
+  "name": { "ar": "مكه", "en": "Makkah" },
+  "role": { "ar": "مساعدة مؤسسة كنف", "en": "Kanaf assistant" },
+  "avatar": { "ar": "م", "en": "M" },
+  "company": {
+    "legal": {
+      "ar": "مؤسسة كنف الأمان للمراقبة الأمنية",
+      "en": "Kanaf Security Systems"
+    },
+    "short": { "ar": "كنف", "en": "Kanaf" },
+    "alternate": "KANAF Systems",
+    "founded": "2024",
+    "city": { "ar": "مكة المكرمة", "en": "Makkah" },
+    "rating": "4.8",
+    "reviewCount": "23"
+  },
+  "manager": {
+    "name": { "ar": "المهندس محمد طلعت", "en": "Eng. Mohamed Talat" },
+    "title": { "ar": "مدير المشروعات", "en": "Project Manager" },
+    "phone": "+966568646500",
+    "phoneDisplay": "+966 56 864 6500",
+    "note": {
+      "ar": "رقم التواصل معه: +966 56 864 6500 — اتصال أو واتساب.",
+      "en": "His contact number is +966 56 864 6500 — call or WhatsApp."
+    }
+  },
+  "contact": {
+    "phone": "+966568646500",
+    "phoneDisplay": "+966 56 864 6500",
+    "email": "Kanaf.S.Systems@gmail.com",
+    "address": {
+      "ar": "7716 زنباع بن سلامة رضي الله عنه، الحمراء أم الجود، مكة المكرمة 24331",
+      "en": "7716 Zunbaa bin Salama Street, Al Hamra, Umm Al Joud, Makkah 24331, Saudi Arabia"
+    },
+    "hours": {
+      "ar": "السبت – الخميس: 9 صباحاً – 10 مساءً · الجمعة: مغلق",
+      "en": "Saturday–Thursday: 9:00–22:00 · Friday: closed"
+    },
+    "maps": "https://share.google/LFFjQ3A3QUgp5a32A",
+    "directions": "https://www.google.com/maps/dir/?api=1&destination=%D9%85%D8%A4%D8%B3%D8%B3%D8%A9%20%D9%83%D9%86%D9%81%20%D8%A7%D9%84%D8%A3%D9%85%D8%A7%D9%86%20%D9%84%D9%84%D9%85%D8%B1%D8%A7%D9%82%D8%A8%D8%A9%20%D8%A7%D9%84%D8%A3%D9%85%D9%86%D9%8A%D8%A9%2C%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"
+  },
+  "ui": {
+    "ar": {
+      "open": "افتح محادثة مكه",
+      "close": "إغلاق المحادثة",
+      "placeholder": "اكتب سؤالك…",
+      "send": "إرسال",
+      "typing": "مكه تكتب",
+      "you": "أنت",
+      "managerLabel": "مدير المشروعات",
+      "contactLabel": "التواصل",
+      "addressLabel": "العنوان",
+      "hoursLabel": "ساعات المعرض",
+      "phoneLabel": "الجوال",
+      "emailLabel": "البريد",
+      "quickLabel": "اقتراحات",
+      "fallbackHint": "أو اختر أحد الخيارات:"
+    },
+    "en": {
+      "open": "Open Makkah chat",
+      "close": "Close chat",
+      "placeholder": "Type your question…",
+      "send": "Send",
+      "typing": "Makkah is typing",
+      "you": "You",
+      "managerLabel": "Project Manager",
+      "contactLabel": "Contact",
+      "addressLabel": "Address",
+      "hoursLabel": "Showroom hours",
+      "phoneLabel": "Mobile",
+      "emailLabel": "Email",
+      "quickLabel": "Suggestions",
+      "fallbackHint": "Or pick one of these:"
+    }
+  },
+  "welcome": {
+    "ar": [
+      "أهلاً بك، أنا مكه، المساعدة الآلية لمؤسسة كنف في مكة المكرمة.",
+      "أجاوب من معلومات الموقع عن الخدمات والمعاينة، وأوصلك ببيانات المدير والتواصل. للرد البشري استخدم الاتصال أو واتساب."
+    ],
+    "en": [
+      "Hello, I'm Makkah, the automated assistant for Kanaf Security Systems in Makkah.",
+      "I answer from the information on this website — services, surveys, and how to reach the manager. For a personal reply, call or message us on WhatsApp."
+    ]
+  },
+  "quickReplies": [
+    { "id": "manager", "label": { "ar": "مدير المشروعات", "en": "Project manager" } },
+    { "id": "contact", "label": { "ar": "التواصل", "en": "Contact" } },
+    { "id": "services", "label": { "ar": "خدماتنا", "en": "Services" } },
+    { "id": "quote", "label": { "ar": "طلب معاينة", "en": "Request a survey" } }
+  ],
+  "actionCatalog": [
+    {
+      "id": "call",
+      "label": { "ar": "اتصال", "en": "Call" },
+      "href": "tel:+966568646500"
+    },
+    {
+      "id": "whatsapp",
+      "label": { "ar": "واتساب", "en": "WhatsApp" },
+      "href": {
+        "ar": "https://wa.me/966568646500?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%D9%83%D9%85%20%D9%85%D9%86%20%D9%85%D9%88%D9%82%D8%B9%20%D9%83%D9%86%D9%81.",
+        "en": "https://wa.me/966568646500?text=Hello%2C%20I%20am%20contacting%20you%20from%20the%20Kanaf%20website."
+      }
+    },
+    {
+      "id": "email",
+      "label": { "ar": "بريد", "en": "Email" },
+      "href": "mailto:Kanaf.S.Systems@gmail.com"
+    },
+    {
+      "id": "quote",
+      "label": { "ar": "نموذج عرض السعر", "en": "Quote form" },
+      "href": { "ar": "index.html#contact", "en": "en/index.html#contact" }
+    },
+    {
+      "id": "directions",
+      "label": { "ar": "الاتجاهات", "en": "Directions" },
+      "href": "https://www.google.com/maps/dir/?api=1&destination=%D9%85%D8%A4%D8%B3%D8%B3%D8%A9%20%D9%83%D9%86%D9%81%20%D8%A7%D9%84%D8%A3%D9%85%D8%A7%D9%86%20%D9%84%D9%84%D9%85%D8%B1%D8%A7%D9%82%D8%A8%D8%A9%20%D8%A7%D9%84%D8%A3%D9%85%D9%86%D9%8A%D8%A9%2C%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"
+    },
+    {
+      "id": "maps",
+      "label": { "ar": "خرائط جوجل", "en": "Google Maps" },
+      "href": "https://share.google/LFFjQ3A3QUgp5a32A"
+    }
+  ],
+  "intents": [
+    {
+      "id": "greeting",
+      "keywords": ["السلام", "سلام", "مرحبا", "مرحباً", "اهلا", "أهلا", "اهلين", "هلا", "صباح", "مساء", "hello", "hi", "hey", "good morning", "good evening"],
+      "reply": {
+        "ar": ["أهلاً بك. أنا مكه. تقدر تسأل عن الخدمات، المعاينة، أو بيانات المدير والتواصل."],
+        "en": ["Hello. I'm Makkah. Ask me about our services, a site survey, or how to reach the manager."]
+      }
+    },
+    {
+      "id": "thanks",
+      "keywords": ["شكرا", "شكراً", "مشكور", "تسلم", "thanks", "thank you"],
+      "reply": {
+        "ar": ["العفو. إذا احتجت معاينة أو عرض سعر، اطلبها من هنا أو عبر واتساب."],
+        "en": ["You're welcome. If you need a survey or a quote, use the form or WhatsApp."]
+      },
+      "actions": ["whatsapp", "quote"]
+    },
+    {
+      "id": "manager",
+      "keywords": ["مدير", "المدير", "مدير المؤسسة", "مدير المشروعات", "الادارة", "الإدارة", "محمد", "طلعت", "محمد طلعت", "manager", "project manager", "mohamed", "mohammed", "talat", "who is in charge"],
+      "reply": {
+        "ar": ["مدير المشروعات في مؤسسة كنف هو المهندس محمد طلعت. رقم التواصل معه +966 56 864 6500."],
+        "en": ["The project manager at Kanaf is Eng. Mohamed Talat. His contact number is +966 56 864 6500."]
+      },
+      "show": ["manager"],
+      "actions": ["call", "whatsapp", "email"]
+    },
+    {
+      "id": "phone",
+      "keywords": ["جوال", "جوالك", "رقم", "هاتف", "تلفون", "اتصال", "كلم", "phone", "mobile", "call", "number"],
+      "reply": {
+        "ar": ["رقم التواصل مع المهندس محمد طلعت، مدير المشروعات، هو +966 56 864 6500 — اتصال وواتساب."],
+        "en": ["The contact number for Eng. Mohamed Talat, Project Manager, is +966 56 864 6500 — call and WhatsApp."]
+      },
+      "actions": ["call", "whatsapp"]
+    },
+    {
+      "id": "whatsapp",
+      "keywords": ["واتساب", "واتس", "whatsapp", "wa.me"],
+      "reply": {
+        "ar": ["واتساب المؤسسة على +966 56 864 6500. اضغط الزر ويفتح لك برسالة جاهزة."],
+        "en": ["WhatsApp us on +966 56 864 6500. The button opens a chat with a ready message."]
+      },
+      "actions": ["whatsapp"]
+    },
+    {
+      "id": "email",
+      "keywords": ["ايميل", "إيميل", "بريد", "ايميل", "email", "mail", "gmail"],
+      "reply": {
+        "ar": ["البريد الإلكتروني: Kanaf.S.Systems@gmail.com"],
+        "en": ["Email: Kanaf.S.Systems@gmail.com"]
+      },
+      "actions": ["email"]
+    },
+    {
+      "id": "hours",
+      "keywords": ["ساعات", "دوام", "مواعيد", "وقت", "متى تفتح", "الجمعة", "مفتوح", "مغلق", "hours", "open", "opening", "friday", "closed"],
+      "reply": {
+        "ar": ["تقدر تراسلنا في أي وقت عبر الاتصال أو واتساب. المعرض يستقبل الزوار من السبت إلى الخميس، 9 صباحاً حتى 10 مساءً، والجمعة مغلق."],
+        "en": ["You can call or WhatsApp us at any time. The showroom welcomes visitors Saturday to Thursday, 9:00 to 22:00. Friday is closed."]
+      },
+      "show": ["contact"],
+      "actions": ["call", "whatsapp", "directions"]
+    },
+    {
+      "id": "address",
+      "keywords": ["عنوان", "وين", "فين", "موقعكم", "الموقع", "خريطة", "خرائط", "المعرض", "الحمراء", "ام الجود", "أم الجود", "address", "location", "where", "map", "directions", "showroom"],
+      "reply": {
+        "ar": ["معرضنا في مكة المكرمة — الحمراء أم الجود. ملفنا على خرائط جوجل بتقييم 4.8."],
+        "en": ["Our showroom is in Makkah, Al Hamra, Umm Al Joud. The Google Maps listing is rated 4.8."]
+      },
+      "show": ["contact"],
+      "actions": ["directions", "maps", "call"]
+    },
+    {
+      "id": "contact",
+      "keywords": ["تواصل", "تواصلوا", "اتصل", "بيانات التواصل", "معلومات التواصل", "كيف اتواصل", "contact", "reach", "get in touch"],
+      "reply": {
+        "ar": ["للتواصل مع المهندس محمد طلعت، مدير المشروعات، أو مع المؤسسة:"],
+        "en": ["To reach Eng. Mohamed Talat, Project Manager, or the company:"]
+      },
+      "show": ["manager", "contact"],
+      "actions": ["call", "whatsapp", "email", "quote", "directions"]
+    },
+    {
+      "id": "quote",
+      "keywords": ["عرض سعر", "سعر", "اسعار", "أسعار", "تكلفة", "كم سعر", "معاينة", "عرض", "تسعير", "quote", "quotation", "price", "cost", "survey", "visit"],
+      "reply": {
+        "ar": ["المعاينة وعرض السعر بدون التزام. اكتب احتياج المنشأة في النموذج، أو أرسله مباشرة على واتساب +966 56 864 6500."],
+        "en": ["The site survey and quotation are free of obligation. Send your requirements through the form, or on WhatsApp at +966 56 864 6500."]
+      },
+      "actions": ["quote", "whatsapp", "call"]
+    },
+    {
+      "id": "about",
+      "keywords": ["من انتم", "من أنتم", "عن المؤسسة", "من هي كنف", "تعريف", "about", "who are you", "company"],
+      "reply": {
+        "ar": ["مؤسسة كنف الأمان للمراقبة الأمنية (KANAF Systems) مؤسسة سعودية تأسست عام 2024 في مكة المكرمة. نعمل في توريد وتركيب وصيانة كاميرات المراقبة والأنظمة الأمنية وإنذار الحريق والشبكات. تقييمنا 4.8 على خرائط جوجل."],
+        "en": ["Kanaf Security Systems (KANAF Systems) is a Saudi establishment founded in 2024 in Makkah. We supply, install and maintain CCTV, security systems, fire alarms and networks. Our Google rating is 4.8."]
+      },
+      "actions": ["call", "whatsapp"]
+    },
+    {
+      "id": "coverage",
+      "keywords": ["خارج مكة", "جدة", "الرياض", "منى", "مزدلفة", "عرفات", "مناطق", "تغطون", "outside", "jeddah", "riyadh", "mina", "arafat"],
+      "reply": {
+        "ar": ["مقرنا مكة المكرمة، وعندنا سابقة أعمال في منى ومزدلفة وعرفات ومواقع متعددة. للمشاريع خارج مكة أرسل تفاصيل الموقع وندرس الطلب."],
+        "en": ["We are based in Makkah, with delivered work in Mina, Muzdalifah and Arafat and on multi-site projects. For work outside Makkah, send the site details and we will review the request."]
+      },
+      "actions": ["quote", "whatsapp"]
+    },
+    {
+      "id": "cctv",
+      "keywords": ["كاميرا", "كاميرات", "مراقبة", "cctv", "dvr", "nvr", "ip", "انالوج", "أنالوج", "analog", "تسجيل"],
+      "reply": {
+        "ar": ["نوفر توريد وتركيب كاميرات مراقبة IP وأنالوج مع أجهزة التسجيل DVR/NVR، بعد معاينة الموقع وتحديد التغطية ومدة الاحتفاظ بالتسجيل."],
+        "en": ["We supply and install IP and analog CCTV cameras with DVR/NVR recorders, after a site survey that sets coverage and how long recordings are kept."]
+      },
+      "links": [
+        { "href": { "ar": "services/cctv.html", "en": "en/services/cctv.html" }, "label": { "ar": "كاميرات المراقبة", "en": "CCTV cameras" } },
+        { "href": { "ar": "services/cctv-maintenance.html", "en": "en/services/cctv-maintenance.html" }, "label": { "ar": "صيانة الكاميرات", "en": "CCTV maintenance" } }
+      ],
+      "actions": ["quote", "whatsapp"]
+    },
+    {
+      "id": "access",
+      "keywords": ["تحكم", "دخول", "انتركم", "إنتركم", "access", "intercom", "بصمة", "بوابة"],
+      "reply": {
+        "ar": ["ننفذ أنظمة التحكم بالدخول والإنتركم: دراسة المداخل، التوريد والتركيب، والبرمجة حسب طبيعة المنشأة."],
+        "en": ["We install access control and intercom systems: entrance study, supply, installation and programming matched to the facility."]
+      },
+      "links": [
+        { "href": { "ar": "services/access-control.html", "en": "en/services/access-control.html" }, "label": { "ar": "التحكم بالدخول والإنتركم", "en": "Access control & intercom" } }
+      ],
+      "actions": ["quote"]
+    },
+    {
+      "id": "fire",
+      "keywords": ["حريق", "دخان", "كواشف", "انذار", "إنذار", "fire", "smoke", "alarm"],
+      "reply": {
+        "ar": ["نوفر أنظمة إنذار الحريق وكواشف الدخان حسب متطلبات المشروع، من الدراسة إلى التركيب والاختبار."],
+        "en": ["We supply fire alarm and smoke detection systems to the project's requirements, from study through installation and testing."]
+      },
+      "links": [
+        { "href": { "ar": "services/fire-alarm.html", "en": "en/services/fire-alarm.html" }, "label": { "ar": "إنذار الحريق", "en": "Fire alarm" } },
+        { "href": { "ar": "services/safety-systems.html", "en": "en/services/safety-systems.html" }, "label": { "ar": "أنظمة السلامة", "en": "Safety systems" } }
+      ],
+      "actions": ["quote"]
+    },
+    {
+      "id": "networks",
+      "keywords": ["شبكه", "شبكة", "شبكات", "انترنت", "إنترنت", "واي فاي", "wifi", "network", "cabling", "بنية تحتية"],
+      "reply": {
+        "ar": ["ننفذ الشبكات السلكية واللاسلكية والإنترنت الداخلي والبنية التحتية للاتصالات، ومنها تجهيز شبكة مستقلة لأنظمة المراقبة."],
+        "en": ["We build wired and wireless networks, internal internet and telecom infrastructure, including a dedicated network for surveillance systems."]
+      },
+      "links": [
+        { "href": { "ar": "services/networks.html", "en": "en/services/networks.html" }, "label": { "ar": "الشبكات والبنية التحتية", "en": "Networks & infrastructure" } }
+      ],
+      "actions": ["quote"]
+    },
+    {
+      "id": "maintenance",
+      "keywords": ["صيانة", "عقد", "عقود", "دعم فني", "عطل", "maintenance", "support contract", "repair"],
+      "reply": {
+        "ar": ["نوفر صيانة كاميرات المراقبة، عقود صيانة للأنظمة الأمنية والتقنية، ودعماً فنياً للشركات بعد التسليم."],
+        "en": ["We provide CCTV maintenance, maintenance contracts for security and technical systems, and technical support for companies after handover."]
+      },
+      "links": [
+        { "href": { "ar": "services/cctv-maintenance.html", "en": "en/services/cctv-maintenance.html" }, "label": { "ar": "صيانة كاميرات المراقبة", "en": "CCTV maintenance" } },
+        { "href": { "ar": "services/maintenance-contracts.html", "en": "en/services/maintenance-contracts.html" }, "label": { "ar": "عقود الصيانة", "en": "Maintenance contracts" } },
+        { "href": { "ar": "services/technical-support.html", "en": "en/services/technical-support.html" }, "label": { "ar": "الدعم الفني", "en": "Technical support" } }
+      ],
+      "actions": ["quote", "whatsapp"]
+    },
+    {
+      "id": "services",
+      "keywords": ["خدمات", "خدمه", "خدمة", "ايش تسوون", "ماذا تقدم", "سلامة", "أنظمة السلامة", "انظمة السلامة", "متكاملة", "أنظمة أمنية", "انظمة امنية", "إدارة المشاريع", "ادارة المشاريع", "services", "what do you do", "offer", "safety", "integrated", "security systems", "project management"],
+      "reply": {
+        "ar": ["نغطي عشر خدمات رئيسية: من دراسة الاحتياج إلى التوريد والتركيب والبرمجة ثم الدعم والصيانة."],
+        "en": ["We cover ten core services, from the needs study through supply, installation and programming to support and maintenance."]
+      },
+      "links": [
+        { "href": { "ar": "services/cctv.html", "en": "en/services/cctv.html" }, "label": { "ar": "كاميرات المراقبة", "en": "CCTV" } },
+        { "href": { "ar": "services/security-systems.html", "en": "en/services/security-systems.html" }, "label": { "ar": "أنظمة المراقبة", "en": "Surveillance systems" } },
+        { "href": { "ar": "services/fire-alarm.html", "en": "en/services/fire-alarm.html" }, "label": { "ar": "إنذار الحريق", "en": "Fire alarm" } },
+        { "href": { "ar": "services/access-control.html", "en": "en/services/access-control.html" }, "label": { "ar": "التحكم بالدخول", "en": "Access control" } },
+        { "href": { "ar": "services/networks.html", "en": "en/services/networks.html" }, "label": { "ar": "الشبكات", "en": "Networks" } },
+        { "href": { "ar": "services/safety-systems.html", "en": "en/services/safety-systems.html" }, "label": { "ar": "السلامة", "en": "Safety" } },
+        { "href": { "ar": "services/integrated-security.html", "en": "en/services/integrated-security.html" }, "label": { "ar": "أنظمة متكاملة", "en": "Integrated security" } },
+        { "href": { "ar": "services/cctv-maintenance.html", "en": "en/services/cctv-maintenance.html" }, "label": { "ar": "صيانة الكاميرات", "en": "CCTV maintenance" } },
+        { "href": { "ar": "services/maintenance-contracts.html", "en": "en/services/maintenance-contracts.html" }, "label": { "ar": "عقود الصيانة", "en": "Maintenance contracts" } },
+        { "href": { "ar": "services/technical-support.html", "en": "en/services/technical-support.html" }, "label": { "ar": "الدعم الفني", "en": "Technical support" } },
+        { "href": { "ar": "services/project-management.html", "en": "en/services/project-management.html" }, "label": { "ar": "إدارة المشاريع", "en": "Project management" } }
+      ],
+      "actions": ["quote"]
+    },
+    {
+      "id": "language",
+      "keywords": ["english", "انجليزي", "إنجليزي", "عربي", "العربية", "language", "لغة"],
+      "reply": {
+        "ar": ["لتبديل لغة الموقع استخدم زر English في أعلى الصفحة بجانب القائمة. وأنا أفهم السؤال بالعربي أو بالإنجليزي."],
+        "en": ["Use the العربية button at the top of the page, next to the menu, to switch the site language. I understand questions in Arabic or English."]
+      }
+    }
+  ],
+  "fallback": {
+    "reply": {
+      "ar": ["السؤال ده مش موجود في معلومات الموقع. للتواصل والرد على استفسارك، هذه بيانات المهندس محمد طلعت، مدير المشروعات:"],
+      "en": ["This question is not covered by the website information. For an answer to your inquiry, here is how to reach Eng. Mohamed Talat, Project Manager:"]
+    },
+    "show": ["manager", "contact"],
+    "actions": ["call", "whatsapp", "email"]
+  }
+}

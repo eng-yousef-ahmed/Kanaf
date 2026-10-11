@@ -170,7 +170,8 @@ FONTS = "".join('<link rel="stylesheet" href="@@assets/fonts/%s">\n' % f for f i
 CSS = ('<link rel="stylesheet" href="@@assets/css/site.css">\n'
        '<link rel="stylesheet" href="@@assets/css/extra.css">\n'
        '<link rel="stylesheet" href="@@assets/css/services.css">\n'
-       '<link rel="stylesheet" href="@@assets/css/en.css">\n')
+       '<link rel="stylesheet" href="@@assets/css/en.css">\n'
+       '<link rel="stylesheet" href="@@assets/css/chatbot.css">\n')
 
 ARROW_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M19 12H5m7-7-7 7 7 7"/></svg>'
 CHECK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>'
@@ -199,10 +200,12 @@ def en_header():
         '    <a href="@@en/blog/index.html">Blog</a>\n'
         '    <a href="@@en/index.html#location">Location</a>\n'
         '    <a href="@@en/index.html#faq">FAQ</a>\n'
-        '    <a href="@@index.html" class="lang-sw" hreflang="ar">العربية</a>\n'
         '    <a href="@@en/index.html#contact" class="nav-cta">Request a quote</a>\n'
         '  </nav>\n'
-        '  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>\n'
+        '  <div class="nav-tools">\n'
+        '    <a href="@@index.html" class="lang-sw" hreflang="ar" lang="ar">العربية</a>\n'
+        '    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>\n'
+        '  </div>\n'
         '</div></header>\n'
     ) % {"phone": PHONE, "phone_disp": "+966 56 864 6500", "email": EMAIL}
 
@@ -286,6 +289,7 @@ def scripts(lang):
     s = '<script src="@@content/site-data.js"></script>\n'
     if lang == "en":
         s += '<script src="@@content/site-data.en.js"></script>\n'
+    s += '<script src="@@assets/js/chatbot.js"></script>\n'
     return s
 
 
