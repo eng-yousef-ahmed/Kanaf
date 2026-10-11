@@ -1,0 +1,108 @@
+/* ===== صفحات الخدمات المستقلة ===== */
+
+.svc-eyebrow {
+  display: inline-block;
+  font-family: var(--fh);
+  font-weight: 800;
+  font-size: .8rem;
+  letter-spacing: 1px;
+  color: var(--green2);
+  background: rgba(99,169,122,.12);
+  border: 1px solid rgba(99,169,122,.35);
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+.svc-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
+
+.svc-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 40px;
+  align-items: start;
+}
+.svc-main { display: grid; gap: 22px; }
+.svc-block {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 34px 36px;
+  box-shadow: 0 12px 34px -26px rgba(20,24,28,.25);
+}
+.svc-block h2 {
+  font-size: clamp(1.25rem, 2.2vw, 1.55rem);
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+.svc-block p { color: var(--muted); font-size: .98rem; margin-bottom: 12px; }
+.svc-block p:last-child { margin-bottom: 0; }
+
+.svc-list { display: grid; gap: 12px; }
+.svc-list li {
+  display: flex; gap: 12px; align-items: flex-start;
+  font-size: .95rem; font-weight: 500; color: #3a4046;
+}
+.svc-list .tick {
+  flex-shrink: 0; width: 24px; height: 24px; border-radius: 7px;
+  background: var(--grad); color: #fff; display: grid; place-items: center; margin-top: 2px;
+}
+.svc-list .tick svg { width: 13px; height: 13px; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chips span {
+  background: var(--bg); border: 1px solid var(--line);
+  color: #3c4148; font-weight: 700; font-size: .88rem;
+  padding: 8px 16px; border-radius: 999px;
+}
+
+.svc-steps { display: grid; gap: 16px; counter-reset: st; }
+.svc-steps li { display: flex; gap: 16px; align-items: flex-start; }
+.svc-steps .st-n {
+  flex-shrink: 0; width: 46px; height: 46px; border-radius: 14px;
+  background: var(--grad); color: #fff;
+  display: grid; place-items: center;
+  font-family: var(--fh); font-weight: 900; font-size: .95rem;
+}
+.svc-steps h4 { font-size: 1rem; font-weight: 800; margin-bottom: 2px; }
+.svc-steps p { margin: 0; }
+
+/* الشريط الجانبي */
+.svc-side { display: grid; gap: 20px; position: sticky; top: 110px; }
+.side-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 28px;
+  box-shadow: var(--sh);
+  display: grid; gap: 12px;
+}
+.side-card h3 { font-size: 1.15rem; font-weight: 900; }
+.side-card p { color: var(--muted); font-size: .92rem; }
+.side-card .btn { justify-content: center; }
+.svc-others { display: grid; gap: 4px; }
+.svc-others a {
+  font-weight: 700; font-size: .92rem; color: #3c4148;
+  padding: 10px 12px; border-radius: 11px; transition: .2s;
+}
+.svc-others a:hover { background: rgba(79,140,98,.09); color: var(--greend); }
+.svc-others a:last-child { color: var(--greend); font-weight: 800; }
+
+/* زر "التفاصيل" على بطاقات الخدمات في الصفحة الرئيسية */
+.svc-more {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 14px;
+  font-family: var(--fh); font-weight: 800; font-size: .88rem;
+  color: var(--greend);
+}
+.svc-more:hover { text-decoration: underline; }
+
+/* الأسئلة الشائعة داخل صفحات الخدمات */
+.svc-page .faq-list { max-width: 880px; }
+
+@media (max-width: 980px) {
+  .svc-layout { grid-template-columns: 1fr; }
+  .svc-side { position: static; }
+}
+@media (max-width: 640px) {
+  .svc-block { padding: 26px 22px; }
+}
