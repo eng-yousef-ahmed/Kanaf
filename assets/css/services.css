@@ -153,6 +153,7 @@
 .mini-post strong { font-size: .92rem; font-weight: 800; line-height: 1.6; }
 
 .post-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+.post-grid--four { grid-template-columns: repeat(2, 1fr); }
 .post-card {
   display: flex; flex-direction: column; gap: 12px;
   background: #fff; border: 1px solid var(--line); border-radius: 22px;

@@ -57,7 +57,7 @@ LABELS = {
             ("الدعم والصيانة", "دعم مستمر وصيانة للاستمرارية."),
         ],
         "wa": "واتساب مباشر", "call": "اتصل بنا الآن", "quote": "اطلب عرض سعر",
-        "quote_form": "نموذج طلب عرض السعر", "cta_side_h": "جاهزون لدراسة احتياجكم",
+        "quote_form": "نموذج طلب عرض السعر", "cta_side_h": "جاهزون لدراسة احتياجاتكم",
         "cta_side_p": "المعاينة وعرض السعر بدون التزام.", "others": "خدمات أخرى",
         "all_services": "كل الخدمات ←", "related_tag": "أعمال مرتبطة", "related_h": "من تنفيذ كنف",
         "related_p": "نماذج من مشاريعنا في هذا المجال.", "faq_tag": "أسئلة شائعة",
@@ -528,7 +528,7 @@ def render_blog_index(lang, posts, parts):
         '  <h1>%(blog_h)s</h1>\n'
         '  <p>%(blog_p)s</p>\n'
         '</div></div>\n'
-        '<div class="pad"><div class="container"><div class="post-grid">\n%(cards)s</div></div></div>\n'
+        '<div class="pad"><div class="container"><div class="post-grid post-grid--four">\n%(cards)s</div></div></div>\n'
         '<div class="pad-b"><div class="container"><div class="cta-inner reveal">\n'
         '  <div><h3>%(blog_cta_h)s</h3><p>%(blog_cta_p)s</p></div>\n'
         '  <div style="display:flex;gap:14px;flex-wrap:wrap"><a class="btn btn-white" href="%(wa)s" target="_blank" rel="noopener">%(wa_label)s</a><a class="btn btn-darkline" href="%(contact)s">%(blog_cta_btn)s</a></div>\n'
