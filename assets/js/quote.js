@@ -5,6 +5,18 @@
   var form = document.getElementById("quoteForm");
   if (!form) { return; }
   var msg = document.getElementById("quoteMsg");
+  var EN = form.getAttribute("data-lang") === "en";
+  var T = EN ? {
+    need: "Please enter your name and mobile number.",
+    opened: "WhatsApp opened with your message. Press send there.",
+    head: "Quote request — from the Kanaf website",
+    name: "Name", phone: "Mobile", city: "City / location", type: "System", details: "Details", none: "—"
+  } : {
+    need: "من فضلك اكتب الاسم ورقم الجوال.",
+    opened: "تم فتح واتساب بالرسالة، اضغط إرسال هناك.",
+    head: "طلب عرض سعر — من موقع كنف",
+    name: "الاسم", phone: "الجوال", city: "المدينة / الموقع", type: "نوع النظام", details: "التفاصيل", none: "—"
+  };
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -12,22 +24,22 @@
     var name = get("name"), phone = get("phone");
 
     if (!name || !phone) {
-      if (msg) { msg.textContent = "من فضلك اكتب الاسم ورقم الجوال."; msg.className = "qf-msg err"; }
+      if (msg) { msg.textContent = T.need; msg.className = "qf-msg err"; }
       (name ? form.elements.phone : form.elements.name).focus();
       return;
     }
 
     var lines = [
-      "طلب عرض سعر — من موقع كنف",
-      "الاسم: " + name,
-      "الجوال: " + phone,
-      "المدينة / الموقع: " + (get("city") || "—"),
-      "نوع النظام: " + get("type"),
-      "التفاصيل: " + (get("details") || "—")
+      T.head,
+      T.name + ": " + name,
+      T.phone + ": " + phone,
+      T.city + ": " + (get("city") || T.none),
+      T.type + ": " + get("type"),
+      T.details + ": " + (get("details") || T.none)
     ];
     var url = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(lines.join("\n"));
     window.open(url, "_blank", "noopener");
 
-    if (msg) { msg.textContent = "تم فتح واتساب بالرسالة، اضغط إرسال هناك."; msg.className = "qf-msg ok"; }
+    if (msg) { msg.textContent = T.opened; msg.className = "qf-msg ok"; }
   });
 })();

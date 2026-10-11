@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url><loc>https://kanaf-systems.netlify.app/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://kanaf-systems.netlify.app/en/index.html</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
   <url><loc>https://kanaf-systems.netlify.app/blog/index.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://kanaf-systems.netlify.app/en/blog/index.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://kanaf-systems.netlify.app/services/cctv.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://kanaf-systems.netlify.app/services/security-systems.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://kanaf-systems.netlify.app/services/safety-systems.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
@@ -17,4 +19,19 @@
   <url><loc>https://kanaf-systems.netlify.app/blog/ip-vs-analog-cameras.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
   <url><loc>https://kanaf-systems.netlify.app/blog/cctv-retention-period.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
   <url><loc>https://kanaf-systems.netlify.app/blog/why-cctv-maintenance-matters.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kanaf-systems.netlify.app/en/services/cctv.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://kanaf-systems.netlify.app/en/services/security-systems.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://kanaf-systems.netlify.app/en/services/safety-systems.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://kanaf-systems.netlify.app/en/services/fire-alarm.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://kanaf-systems.netlify.app/en/services/networks.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://kanaf-systems.netlify.app/en/services/access-control.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://kanaf-systems.netlify.app/en/services/cctv-maintenance.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://kanaf-systems.netlify.app/en/services/integrated-security.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://kanaf-systems.netlify.app/en/services/technical-support.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://kanaf-systems.netlify.app/en/services/maintenance-contracts.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://kanaf-systems.netlify.app/en/services/project-management.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://kanaf-systems.netlify.app/en/blog/how-to-choose-cctv-cameras.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kanaf-systems.netlify.app/en/blog/ip-vs-analog-cameras.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kanaf-systems.netlify.app/en/blog/cctv-retention-period.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kanaf-systems.netlify.app/en/blog/why-cctv-maintenance-matters.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
 </urlset>

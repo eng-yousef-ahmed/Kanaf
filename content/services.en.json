@@ -1,0 +1,241 @@
+{
+  "_comment": "English content for service pages. Keyed by the same slug as content/services.json. Build with: python3 scripts/build_pages.py",
+  "cctv": {
+    "name": "CCTV Cameras",
+    "eyebrow": "Security & Safety Solutions",
+    "lead": "Supply and installation of IP and analog CCTV cameras suited to your site and security needs, including DVR/NVR recording devices.",
+    "intro": [
+      "We design the surveillance system around the site itself: the number of points to cover, lighting conditions, distances, and how long recordings must be kept.",
+      "We offer IP cameras for modern facilities that need high quality and flexible management, and analog cameras for installations that need a cost-effective, fast deployment. Together we choose the right option for each point."
+    ],
+    "includes": [
+      "Site survey to define camera positions and coverage angles.",
+      "Supply of IP and analog cameras and accessories as required.",
+      "Installation of DVR and NVR recorders and storage setup.",
+      "Cable routing, termination, and configuration.",
+      "Testing of image and recording quality, and user training."
+    ],
+    "forWho": ["Shops and stores", "Offices and commercial buildings", "Schools and hospitals", "Warehouses and industrial sites", "Large residential compounds"],
+    "faq": [
+      { "q": "What is the difference between IP and analog cameras?", "a": "IP cameras send video over a network and offer higher resolution and easier remote management. Analog cameras use dedicated cabling and are usually cheaper for small projects. We recommend the best fit after the site survey." },
+      { "q": "Does the service include recording devices?", "a": "Yes. We supply DVR or NVR recorders based on the camera type and number of points, and size the storage for the retention period you need." }
+    ],
+    "keywords": "CCTV cameras, CCTV installation Makkah, IP cameras, analog cameras, DVR, NVR, security cameras Saudi Arabia"
+  },
+  "security-systems": {
+    "name": "Security Surveillance Systems",
+    "eyebrow": "Security & Safety Solutions",
+    "lead": "Integrated security surveillance systems for facilities, connecting cameras, recording, and management in one easy-to-operate system.",
+    "intro": [
+      "An effective security system is more than cameras. It is a set of components covering coverage, recording, live viewing, and user permissions.",
+      "We design the system to be simple for the security team to operate, and easy to expand when you add new branches or points."
+    ],
+    "includes": [
+      "Risk assessment and identification of critical coverage areas.",
+      "Supply and installation of surveillance equipment and recording systems.",
+      "Live monitoring from a central screen or from your mobile, depending on your needs.",
+      "User permission setup and recording retention settings.",
+      "Training for the operations team and a short user guide."
+    ],
+    "forWho": ["Shopping malls", "Government and private facilities", "Factories and warehouses", "Multi-branch sites"],
+    "faq": [
+      { "q": "Can I monitor the system from my phone?", "a": "Yes, depending on the devices selected. We confirm this in the quotation." },
+      { "q": "Do you cover multi-branch facilities?", "a": "Yes. We design the system so that all branches can be managed from a central location if you wish." }
+    ],
+    "keywords": "security surveillance systems, integrated security system, facility security Makkah"
+  },
+  "safety-systems": {
+    "name": "Safety Systems & Equipment",
+    "eyebrow": "Security & Safety Solutions",
+    "lead": "Supply and implementation of safety solutions for sites and facilities, matched to the needs of each location.",
+    "intro": [
+      "Safety is a core part of any facility. We prepare the right systems and devices for each site and coordinate them with the other security and technical systems so they work as one.",
+      "Every site has different requirements, so we always start with a survey and define the actual need before proposing a solution."
+    ],
+    "includes": [
+      "Site survey and definition of the actual requirement.",
+      "Supply of the required safety systems and devices.",
+      "Installation and connection according to the approved layout.",
+      "Integration with alarm and surveillance systems where needed.",
+      "Testing, handover, and post-installation support."
+    ],
+    "forWho": ["Residential and commercial buildings", "Factories and warehouses", "Schools and institutions", "Hotels and hospitality facilities"],
+    "faq": [
+      { "q": "Do you provide solutions for existing facilities?", "a": "Yes. We survey the site and propose the necessary additions or changes, minimizing disruption to operations where possible." }
+    ],
+    "keywords": "safety systems, safety equipment, facility safety solutions, Makkah"
+  },
+  "fire-alarm": {
+    "name": "Fire Alarm & Smoke Detection",
+    "eyebrow": "Fire Safety & Protection",
+    "lead": "Fire alarm and protection systems tailored to your project requirements. They detect danger early and alert people in time.",
+    "intro": [
+      "An early warning system reduces losses and gives people enough time to evacuate. We choose the detector types (smoke, heat, or others) based on the nature of each area.",
+      "We design the detector layout, control panel, and alarm devices, and test the full system before handover."
+    ],
+    "includes": [
+      "Site survey to define detector positions and alarm points.",
+      "Supply of the control panel, detectors, manual call points, and audible/visual alarms.",
+      "Cabling and device installation.",
+      "Testing of every point and a full alarm test.",
+      "Operation and maintenance guide, with periodic maintenance for the system."
+    ],
+    "forWho": ["Residential and commercial buildings", "Warehouses and factories", "Hospitals and schools", "Hotels and complexes"],
+    "faq": [
+      { "q": "Does the installation need maintenance after handover?", "a": "Yes. Alarm systems need periodic inspection to confirm they are ready to operate. We offer maintenance contracts for this." },
+      { "q": "Do you cover multiple sites?", "a": "Yes. We work to standardize the systems across different sites under one management approach." }
+    ],
+    "keywords": "fire alarm system, smoke detectors, fire alarm Makkah, fire safety"
+  },
+  "networks": {
+    "name": "Networks & Infrastructure",
+    "eyebrow": "Technical Solutions & Infrastructure",
+    "lead": "Data networks, internal internet, and telecom infrastructure, forming a reliable foundation for all your systems.",
+    "intro": [
+      "Every security or technical system depends on a stable network. We design the network according to the number of users and devices, and prepare the infrastructure that connects buildings and departments.",
+      "We work on both wired and wireless networks, and prepare surveillance networks so they run fast and steadily without interruptions."
+    ],
+    "includes": [
+      "Requirements study and network design, including connection points.",
+      "Cable routing and installation of distribution panels and switches.",
+      "Installation of Wi-Fi access points and coverage planning.",
+      "A dedicated network for surveillance and control systems.",
+      "Network configuration and speed and stability testing."
+    ],
+    "forWho": ["Offices and administrative buildings", "Schools and universities", "Factories and warehouses", "Multi-department facilities"],
+    "faq": [
+      { "q": "Do you only install wireless networks?", "a": "No. We implement both wired and wireless networks and define the right mix for each location." },
+      { "q": "Can you prepare the network for a new project before finishing works?", "a": "Yes. Early coordination with the contractor saves time and cost." }
+    ],
+    "keywords": "structured cabling, wired and wireless networks, internal internet, IT infrastructure, Makkah"
+  },
+  "access-control": {
+    "name": "Access Control & Intercom",
+    "eyebrow": "Security Systems",
+    "lead": "Programming and implementation of access control and intercom systems, to manage people movement and keep operations safe and smooth.",
+    "intro": [
+      "An access control system decides who can enter which area and when, and records every entry and exit. We program the system according to the permissions of each user group.",
+      "Intercom systems let visitors be identified before a door is opened, and can be integrated with the control and surveillance systems to work together."
+    ],
+    "includes": [
+      "Identifying entry and exit points and the right control method.",
+      "Supply of electric gates, locks, and card or fingerprint readers as required.",
+      "Supply and installation of intercom devices.",
+      "Programming of permissions, time schedules, and access reports.",
+      "Integration with surveillance where needed."
+    ],
+    "forWho": ["Hotels and residential compounds", "Offices and administrative buildings", "Schools and universities", "Factories and warehouses"],
+    "faq": [
+      { "q": "Can I add users or change permissions later?", "a": "Yes. The system is built to be managed and updated easily as your facility changes." },
+      { "q": "What identification methods are available?", "a": "Options include cards, fingerprints, and access codes, depending on the devices selected. We explain the best choices during the survey." }
+    ],
+    "keywords": "access control, intercom systems, access control Makkah, electric gates, fingerprint access"
+  },
+  "cctv-maintenance": {
+    "name": "CCTV Maintenance",
+    "eyebrow": "Maintenance & Support",
+    "lead": "Maintenance and technical support for surveillance systems, keeping them ready and avoiding gaps in coverage when a fault occurs.",
+    "intro": [
+      "A stopped camera means an unmonitored area. We provide preventive maintenance visits that include inspection, cleaning, and settings checks, and corrective maintenance when a fault occurs.",
+      "We monitor the condition of cameras and recording devices and inform you of any issue before it becomes a full outage."
+    ],
+    "includes": [
+      "Periodic inspection of all cameras and recording devices.",
+      "Lens cleaning and adjustment of coverage angles and lighting.",
+      "Checks of storage, recording, and retention periods.",
+      "Repair of faults and supply of spare parts when needed.",
+      "A report after each visit explaining the condition and actions taken."
+    ],
+    "forWho": ["Shops and stores", "Schools and hospitals", "Offices and industrial sites", "Any facility with an existing surveillance system"],
+    "faq": [
+      { "q": "Do you maintain systems installed by other companies?", "a": "Yes, after we survey the existing systems and confirm their condition." },
+      { "q": "Is maintenance under a contract or on request?", "a": "Both options are available: regular visits under a contract, or on-request service. We explain the difference in the quotation." }
+    ],
+    "keywords": "CCTV maintenance, camera maintenance Makkah, security system maintenance"
+  },
+  "integrated-security": {
+    "name": "Integrated Security Systems",
+    "eyebrow": "Technical Solutions & Infrastructure",
+    "lead": "Integration of surveillance, security, access control, and alarm systems into one platform, designed for each facility's needs.",
+    "intro": [
+      "When systems run separately, information gets lost and you end up with many control panels. We connect the systems so monitoring is easier and decisions can be made faster.",
+      "We start by defining the actual need of the facility and build the solution in stages that can grow in the future."
+    ],
+    "includes": [
+      "Requirements analysis and identification of the systems to integrate.",
+      "Design of the integrated platform and its layouts.",
+      "Supply and installation of the systems and their connection.",
+      "Programming of integration rules and shared alerts.",
+      "Team training and operations guide."
+    ],
+    "forWho": ["Large complexes", "Facilities with multiple systems", "Companies expanding across branches", "Government and semi-government projects"],
+    "faq": [
+      { "q": "Can we start with part of the system and expand later?", "a": "Yes. We design the solution so it accepts additions later without rebuilding everything." }
+    ],
+    "keywords": "integrated security systems, security systems integration, security platform Makkah"
+  },
+  "technical-support": {
+    "name": "Technical Support for Companies",
+    "eyebrow": "Maintenance & Support",
+    "lead": "Operational and technical support for companies and facilities, so your systems run efficiently every day and your team can rely on them.",
+    "intro": [
+      "After installation, systems need someone to monitor them and solve problems quickly. We provide technical support covering faults, questions, and changes.",
+      "Our goal is to keep your business running without interruption due to a technical fault."
+    ],
+    "includes": [
+      "Receiving and tracking support requests.",
+      "Resolving faults remotely or on site, depending on the case.",
+      "Changing settings and adding users and permissions.",
+      "Training staff on how to use the systems.",
+      "Periodic reports on system status."
+    ],
+    "forWho": ["Companies and institutions", "Multi-branch facilities", "Administrative offices", "Schools and hospitals"],
+    "faq": [
+      { "q": "How do I request technical support?", "a": "Through WhatsApp, by phone, or through the quotation form on the website." }
+    ],
+    "keywords": "technical support for companies, security systems support, Makkah"
+  },
+  "maintenance-contracts": {
+    "name": "Maintenance Contracts",
+    "eyebrow": "Maintenance & Support",
+    "lead": "Support and maintenance contracts for security, technical, and infrastructure systems, with a clear plan that keeps systems ready and running.",
+    "intro": [
+      "A maintenance contract turns maintenance from an emergency cost into an organized plan. We agree with you on the number of visits, the scope of coverage, and the response level.",
+      "The contract covers the security, technical, and infrastructure systems we installed, or systems managed by other providers after a survey."
+    ],
+    "includes": [
+      "Preventive maintenance visits on an agreed schedule.",
+      "Response priority for faults as defined in the contract.",
+      "Periodic reports on the status of the systems.",
+      "Supply of spare parts as agreed.",
+      "An annual review of the systems with suggested improvements."
+    ],
+    "forWho": ["Facilities that depend on their systems every day", "Schools and hospitals", "Hotels and complexes", "Factories and warehouses"],
+    "faq": [
+      { "q": "What determines the contract price?", "a": "The number of systems and points, the number of visits, and the response level required. We prepare a detailed quotation after the survey." },
+      { "q": "Does the contract include spare parts?", "a": "This is defined in the contract terms as agreed with the client." }
+    ],
+    "keywords": "security system maintenance contracts, camera maintenance contract, technical support contracts, Makkah"
+  },
+  "project-management": {
+    "name": "Project Management",
+    "eyebrow": "Technical Solutions & Infrastructure",
+    "lead": "Management and delivery of systems, IT, telecom, and surveillance projects, from planning to handover.",
+    "intro": [
+      "A large project needs coordination between several parties and clear timelines. We handle planning, execution, and follow-up through to handover.",
+      "We follow a clear methodology: requirements study, solution design, supply and installation, testing, and then support and maintenance."
+    ],
+    "includes": [
+      "Preparing the project plan, timeline, and scope of work.",
+      "Coordinating the different parties on site.",
+      "Following up on supply and installation and monitoring quality.",
+      "Testing and handover with the required documents.",
+      "A closing report and a post-handover support plan."
+    ],
+    "forWho": ["Companies carrying out expansions or new branches", "Government and semi-government projects", "Facilities with more than one contractor", "Seasonal and temporary operations"],
+    "faq": [
+      { "q": "Can you work alongside another contractor on the same project?", "a": "Yes. We coordinate between the parties to ensure a complete handover." }
+    ],
+    "keywords": "IT project management, technical project management, surveillance project delivery, Makkah"
+  }
+}

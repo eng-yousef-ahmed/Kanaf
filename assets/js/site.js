@@ -21,6 +21,19 @@
     burger.addEventListener("click", function () { burger.classList.toggle("open"); menu.classList.toggle("open"); });
   }
 
+  /* فلتر معرض الأعمال (في الصفحة الإنجليزية) */
+  document.querySelectorAll(".pf-filter button").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      document.querySelectorAll(".pf-filter button").forEach(function (b) { b.classList.remove("on"); });
+      btn.classList.add("on");
+      var key = btn.getAttribute("data-filter");
+      document.querySelectorAll(".pf-card").forEach(function (card) {
+        var cats = (card.getAttribute("data-cat") || "").split(" ");
+        card.classList.toggle("hide", !(key === "all" || cats.indexOf(key) > -1));
+      });
+    });
+  });
+
   /* ظهور العناصر */
   document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
 
@@ -35,8 +48,13 @@
     });
   }
 
+  var EN = document.documentElement.lang === "en";
+  var E = window.KANAF_DATA_EN || { projects: {} };
+  var root = box.getAttribute("data-root") || "../";
   var wanted = (box.getAttribute("data-cats") || "").split(" ").filter(Boolean);
-  var items = (D.projects || []).filter(function (p) {
+  var items = (D.projects || []).map(function (p) {
+    return EN ? Object.assign({}, p, E.projects[p.id] || {}) : p;
+  }).filter(function (p) {
     if (p.portfolio === false) { return false; }
     return (p.cats || []).some(function (c) { return wanted.indexOf(c) > -1; });
   });
@@ -49,7 +67,7 @@
 
   box.innerHTML = items.slice(0, 3).map(function (p) {
     var tags = (p.tags || []).map(function (t) { return "<span>" + esc(t) + "</span>"; }).join("");
-    var img = p.image ? '<img src="../' + esc(p.image) + '" alt="' + esc(p.imageAlt || p.title) + '" loading="lazy" onerror="this.style.visibility=\'hidden\'">' : "";
+    var img = p.image ? '<img src="' + root + esc(p.image) + '" alt="' + esc(p.imageAlt || p.title) + '" loading="lazy" onerror="this.style.visibility=\'hidden\'">' : "";
     return '<div class="pf-card" data-cat="' + esc((p.cats || []).join(" ")) + '">' +
       '<div class="pf-media"><span class="pf-cat">' + esc(p.sector) + "</span>" + img + "</div>" +
       '<div class="pf-body"><h4>' + esc(p.shortTitle || p.title) + '</h4><span class="cl">' + esc(p.client) + "</span>" +
