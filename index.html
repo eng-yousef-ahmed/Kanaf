@@ -39,6 +39,7 @@
 {"@context":"https://schema.org","@type":"LocalBusiness","name":"مؤسسة كنف الأمان للمراقبة الأمنية","alternateName":"KANAF Systems","url":"https://kanaf-systems.netlify.app/","telephone":"+966568646500","email":"Kanaf.S.Systems@gmail.com","address":{"@type":"PostalAddress","streetAddress":"7716 زنباع بن سلامة رضي الله عنه، الحمراء أم الجود","addressLocality":"مكة المكرمة","postalCode":"24331","addressCountry":"SA"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"23"},"sameAs":["https://share.google/LFFjQ3A3QUgp5a32A"]}
 </script>
 <link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/chatbot.css">
 </head>
 <body>
 
@@ -75,12 +76,16 @@
     <a href="#home" data-nav="home" class="active">الرئيسية</a>
     <a href="#about" data-nav="about">من نحن</a>
     <a href="#services" data-nav="services">خدماتنا</a>
-    <a href="#projects" data-nav="projects">مشاريعنا</a><a href="blog/index.html">المدونة</a><a href="en/index.html" class="lang-sw" hreflang="en">English</a>
+    <a href="#projects" data-nav="projects">مشاريعنا</a>
+    <a href="blog/index.html">المدونة</a>
     <a href="#location" data-nav="location">موقعنا</a>
     <a href="#faq" data-nav="faq">الأسئلة الشائعة</a>
     <a href="#contact" data-nav="contact" class="nav-cta">اطلب عرض سعر</a>
   </nav>
-  <button class="burger" id="burger" aria-label="القائمة"><span></span><span></span><span></span></button>
+  <div class="nav-tools">
+    <a href="en/index.html" class="lang-sw" hreflang="en" lang="en">English</a>
+    <button class="burger" id="burger" aria-label="القائمة"><span></span><span></span><span></span></button>
+  </div>
 </div></header>
 
 <main>
@@ -557,5 +562,6 @@ document.querySelectorAll('.pf-filter button').forEach(function(btn){
 });
 })();
 </script>
+<script src="assets/js/chatbot.js"></script>
 </body>
 </html>

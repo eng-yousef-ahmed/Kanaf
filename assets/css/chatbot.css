@@ -1,0 +1,117 @@
+/* شات بوت مكه — يجلس فوق زر واتساب حتى لا يتداخل معه */
+.mk-root { font-family: var(--fb, "Tajawal", sans-serif); }
+.mk-sr {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;
+}
+.mk-launcher {
+  position: fixed; z-index: 1100; left: 26px; bottom: 98px;
+  display: inline-flex; align-items: center; gap: 8px;
+  height: 52px; padding: 0 16px 0 14px; border: 0; border-radius: 999px;
+  background: var(--dark, #0e1216); color: #fff; cursor: pointer;
+  box-shadow: 0 16px 34px -12px rgba(14, 18, 22, .55);
+  font-family: var(--fh, "Cairo", sans-serif); font-weight: 800; font-size: .92rem;
+}
+.mk-launcher svg { width: 22px; height: 22px; color: var(--green2, #63a97a); }
+.mk-launcher:hover { transform: translateY(-2px); }
+.mk-launcher:focus-visible, .mk-close:focus-visible, .mk-form button:focus-visible, .mk-quick button:focus-visible {
+  outline: 2px solid var(--green2, #63a97a); outline-offset: 2px;
+}
+.mk-panel {
+  position: fixed; z-index: 1200; left: 26px; bottom: 98px;
+  width: min(390px, calc(100vw - 36px));
+  height: min(540px, calc(100vh - 228px));
+  display: flex; flex-direction: column; overflow: hidden;
+  background: #fff; color: var(--ink, #14181c);
+  border: 1px solid var(--line, #e7e2d9); border-radius: 22px;
+  box-shadow: 0 40px 90px -35px rgba(20, 24, 28, .45);
+}
+.mk-panel[hidden] { display: none; }
+.mk-head {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 14px 14px 16px; background: var(--dark, #0e1216); color: #fff;
+}
+.mk-avatar {
+  width: 42px; height: 42px; border-radius: 14px; flex-shrink: 0;
+  display: grid; place-items: center;
+  background: linear-gradient(120deg, var(--green2, #63a97a), var(--greend, #3c6e4c));
+  font-family: var(--fh, "Cairo", sans-serif); font-weight: 900; font-size: 1.15rem;
+}
+.mk-id { display: grid; line-height: 1.25; min-width: 0; }
+.mk-id strong { font-family: var(--fh, "Cairo", sans-serif); font-size: 1.05rem; }
+.mk-id small { color: #aeb6bf; font-weight: 700; font-size: .75rem; }
+.mk-id small::before {
+  content: ""; display: inline-block; width: 7px; height: 7px; margin-inline-end: 6px;
+  border-radius: 50%; background: var(--green2, #63a97a); vertical-align: middle;
+}
+.mk-close {
+  margin-inline-start: auto; width: 36px; height: 36px; border: 0; border-radius: 12px;
+  background: rgba(255, 255, 255, .08); color: #fff; font-size: 1.4rem; line-height: 1; cursor: pointer;
+}
+.mk-close:hover { background: rgba(255, 255, 255, .16); }
+.mk-log {
+  flex: 1; overflow: auto; overscroll-behavior: contain;
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 14px; background: var(--bg, #f7f5f1);
+}
+.mk-msg {
+  max-width: 90%; padding: 10px 12px; font-size: .92rem; line-height: 1.7;
+  box-shadow: 0 10px 24px -20px rgba(20, 24, 28, .45);
+}
+.mk-msg p { margin: 0; }
+.mk-msg.bot {
+  align-self: flex-start; background: #fff; border: 1px solid var(--line, #e7e2d9);
+  border-radius: 16px 16px 16px 4px;
+}
+.mk-msg.user {
+  align-self: flex-end; color: #fff;
+  background: linear-gradient(120deg, var(--green2, #63a97a), var(--greend, #3c6e4c));
+  border-radius: 16px 16px 4px 16px;
+}
+.mk-panel[dir="rtl"] .mk-msg.bot { border-radius: 16px 16px 4px 16px; }
+.mk-panel[dir="rtl"] .mk-msg.user { border-radius: 16px 16px 16px 4px; }
+.mk-typing { color: var(--muted, #6b6f76); font-weight: 700; font-size: .82rem; }
+.mk-card, .mk-links, .mk-actions { margin-top: 8px; }
+.mk-card {
+  background: var(--bg, #f7f5f1); border-radius: 12px; padding: 8px 10px;
+  display: grid; gap: 2px;
+}
+.mk-card .mk-k { font-size: .72rem; font-weight: 800; color: var(--greend, #3c6e4c); }
+.mk-card b { font-family: var(--fh, "Cairo", sans-serif); }
+.mk-card .mk-sub, .mk-card p { color: var(--muted, #6b6f76); font-size: .82rem; margin: 0; }
+.mk-ltr { direction: ltr; unicode-bidi: isolate; text-align: start; }
+.mk-links, .mk-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.mk-links a, .mk-actions a, .mk-quick button {
+  border: 1px solid var(--line, #e7e2d9); background: #fff; color: var(--greend, #3c6e4c);
+  border-radius: 999px; padding: 5px 10px; font-size: .78rem; font-weight: 800;
+  font-family: inherit; cursor: pointer; text-decoration: none;
+}
+.mk-links a:hover, .mk-actions a:hover, .mk-quick button:hover { border-color: var(--green, #4f8c62); }
+.mk-quick {
+  display: flex; gap: 6px; overflow-x: auto; padding: 8px 12px 0;
+  background: #fff;
+}
+.mk-quick button { white-space: nowrap; }
+.mk-form {
+  display: flex; gap: 8px; padding: 10px 12px 12px; background: #fff;
+  border-top: 1px solid var(--line, #e7e2d9);
+}
+.mk-form input {
+  flex: 1; min-width: 0; border: 1px solid var(--line, #e7e2d9); border-radius: 12px;
+  padding: 10px 12px; font: inherit; font-size: .92rem; background: var(--bg, #f7f5f1); color: inherit;
+}
+.mk-form button {
+  border: 0; border-radius: 12px; padding: 0 14px; cursor: pointer; color: #fff;
+  background: linear-gradient(120deg, var(--green2, #63a97a), var(--greend, #3c6e4c));
+  font-family: var(--fh, "Cairo", sans-serif); font-weight: 800;
+}
+@media (max-width: 700px) {
+  .mk-launcher { left: 16px; bottom: 96px; height: 48px; padding: 0 12px; }
+  .mk-panel {
+    left: 10px; right: 10px; bottom: 10px; top: 132px;
+    width: auto; height: auto; border-radius: 18px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mk-launcher { transition: none; }
+}
