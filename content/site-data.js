@@ -27,7 +27,6 @@ window.KANAF_DATA = {
       sector: "مشروع مميز",
       desc: "توحيد أعمال البنية التحتية والشبكات والمراقبة والتحكم ضمن نطاق تنفيذي متكامل يدعم التشغيل في مواقع متعددة وعلى مدى موسمين متتاليين.",
       shortDesc: "تنفيذ متكامل في منى ومزدلفة وعرفات على مدى موسمين متتاليين.",
-      image: "assets/images/projects/hajj-camps.jpg",
       imageAlt: "تنفيذ شبكات وكاميرات مراقبة لمخيمات الحجاج بمشعر منى",
       locations: ["منى", "مزدلفة", "عرفات"],
       stats: [
@@ -53,7 +52,6 @@ window.KANAF_DATA = {
       sector: "قطاع التجزئة",
       desc: "توريد وتركيب كاميرات مراقبة CCTV وحماية شاملة لبيئة البيع بالتجزئة.",
       shortDesc: "توريد وتركيب كاميرات مراقبة CCTV وحماية شاملة لبيئة البيع بالتجزئة.",
-      image: "assets/images/projects/jarir-retail.jpg",
       imageAlt: "كاميرات مراقبة لقطاع التجزئة مكتبة جرير",
       cats: ["cctv"],
       tags: ["CCTV", "حماية"]
@@ -67,7 +65,6 @@ window.KANAF_DATA = {
       sector: "قطاع الضيافة",
       desc: "بوابات تحكم بالدخول وأنظمة إنتركم لتشغيل آمن وسلس.",
       shortDesc: "بوابات تحكم بالدخول وأنظمة إنتركم لتشغيل آمن وسلس.",
-      image: "assets/images/projects/ajwad-hotel.jpg",
       imageAlt: "تحكم بالدخول وإنتركم لقطاع الضيافة فندق أجواد",
       cats: ["access"],
       tags: ["Access Control", "إنتركم"]
@@ -81,7 +78,6 @@ window.KANAF_DATA = {
       sector: "قطاع التعليم",
       desc: "تغطية مراقبة آمنة مع شبكات بيانات وإنترنت داخلي.",
       shortDesc: "تغطية مراقبة آمنة مع شبكات بيانات وإنترنت داخلي.",
-      image: "assets/images/projects/dar-albasheer.jpg",
       imageAlt: "كاميرات مراقبة وشبكات لقطاع التعليم مدرسة دار البشري",
       cats: ["cctv", "network"],
       tags: ["CCTV", "شبكات"]
@@ -95,7 +91,6 @@ window.KANAF_DATA = {
       sector: "قطاع الصناعة",
       desc: "تجهيز شبكات بيانات وبنية تحتية للاتصالات وأنظمة المراقبة.",
       shortDesc: "تجهيز شبكات بيانات وبنية تحتية للاتصالات وأنظمة المراقبة.",
-      image: "assets/images/projects/alnafea-factory.jpg",
       imageAlt: "شبكات وبنية تحتية تقنية لقطاع الصناعة النافع بترومين",
       cats: ["network"],
       tags: ["شبكات", "بنية تحتية"]
@@ -109,7 +104,6 @@ window.KANAF_DATA = {
       sector: "مؤسسات المجتمع",
       desc: "صيانة دورية ودعم فني مستمر لتعزيز الجاهزية والاستمرارية.",
       shortDesc: "صيانة دورية ودعم فني مستمر لتعزيز الجاهزية والاستمرارية.",
-      image: "assets/images/projects/maintenance.jpg",
       imageAlt: "عقود صيانة ودعم للأنظمة الأمنية",
       cats: ["maint"],
       tags: ["صيانة", "دعم فني"]
