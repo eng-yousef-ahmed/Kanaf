@@ -2,7 +2,7 @@
   "_edit": "كل ردود شات بوت «مكه» وبيانات مدير المشروعات والتواصل تتعدل من هذا الملف فقط، بدون إعادة بناء الصفحات.",
   "id": "makkah",
   "name": { "ar": "مكه", "en": "Makkah" },
-  "role": { "ar": "مساعدة مؤسسة كنف", "en": "Kanaf assistant" },
+  "role": { "ar": "المساعد الذكي لموقع كنف", "en": "Smart assistant for the Kanaf website" },
   "avatar": { "ar": "م", "en": "M" },
   "company": {
     "legal": {
@@ -56,7 +56,8 @@
       "phoneLabel": "الجوال",
       "emailLabel": "البريد",
       "quickLabel": "اقتراحات",
-      "fallbackHint": "أو اختر أحد الخيارات:"
+      "fallbackHint": "أو اختر أحد الخيارات:",
+      "hello": "أهلاً"
     },
     "en": {
       "open": "Open Makkah chat",
@@ -72,7 +73,8 @@
       "phoneLabel": "Mobile",
       "emailLabel": "Email",
       "quickLabel": "Suggestions",
-      "fallbackHint": "Or pick one of these:"
+      "fallbackHint": "Or pick one of these:",
+      "hello": "Hi"
     }
   },
   "welcome": {
@@ -127,6 +129,16 @@
     }
   ],
   "intents": [
+    {
+      "id": "identity",
+      "keywords": ["انت مين", "انتي مين", "أنت مين", "أنتي مين", "حضرتك مين", "من انت", "من انتي", "عرفني بنفسك", "عرفينا بنفسك", "اسمك ايه", "ما اسمك", "who are you", "what's your name", "whats your name", "your name", "who r u", "who r you", "enta meen", "ismak eh"],
+      "reply": {
+        "ar": ["أنا مكه، المساعد الذكي لموقع مؤسسة كنف. أقدر أوجهك للخدمة أو المعلومة اللي تدور عليها، وأنا مساعدة مدير المشروعات المهندس محمد طلعت."],
+        "en": ["I'm Makkah, the smart assistant for the Kanaf website. I can guide you to the service or information you're looking for, and I'm the assistant to the project manager, Eng. Mohamed Talat."]
+      },
+      "show": ["manager"],
+      "actions": ["call", "whatsapp"]
+    },
     {
       "id": "greeting",
       "keywords": ["السلام", "سلام", "مرحبا", "مرحباً", "اهلا", "أهلا", "اهلين", "هلا", "صباح", "مساء", "hello", "hi", "hey", "good morning", "good evening"],
@@ -222,7 +234,7 @@
     },
     {
       "id": "about",
-      "keywords": ["من انتم", "من أنتم", "عن المؤسسة", "من هي كنف", "تعريف", "about", "who are you", "company"],
+      "keywords": ["من انتم", "من أنتم", "عن المؤسسة", "من هي كنف", "تعريف", "about", "who are you guys", "your company", "company"],
       "reply": {
         "ar": ["مؤسسة كنف الأمان للمراقبة الأمنية (KANAF Systems) مؤسسة سعودية تأسست عام 2024 في مكة المكرمة. نعمل في توريد وتركيب وصيانة كاميرات المراقبة والأنظمة الأمنية وإنذار الحريق والشبكات. تقييمنا 4.8 على خرائط جوجل."],
         "en": ["Kanaf Security Systems (KANAF Systems) is a Saudi establishment founded in 2024 in Makkah. We supply, install and maintain CCTV, security systems, fire alarms and networks. Our Google rating is 4.8."]
