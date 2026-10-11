@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  var STORAGE_KEY = "kanaf-makkah-v1";
+  var STORAGE_KEY = "kanaf-makkah-v2";
   var pageLang = document.documentElement.lang === "en" ? "en" : "ar";
 
   var FALLBACK = {
@@ -10,11 +10,12 @@
     role: { ar: "مساعدة مؤسسة كنف", en: "Kanaf assistant" },
     avatar: { ar: "م", en: "M" },
     manager: {
-      name: { ar: "م. يوسف أحمد", en: "Eng. Yousef Ahmed" },
-      title: { ar: "مدير المؤسسة", en: "General Manager" },
+      name: { ar: "المهندس محمد طلعت", en: "Eng. Mohamed Talat" },
+      title: { ar: "مدير المشروعات", en: "Project Manager" },
+      phoneDisplay: "+966 56 864 6500",
       note: {
-        ar: "التواصل مع الإدارة على رقم المؤسسة نفسه.",
-        en: "Management uses the same company number."
+        ar: "رقم التواصل معه: +966 56 864 6500 — اتصال أو واتساب.",
+        en: "His contact number is +966 56 864 6500 — call or WhatsApp."
       }
     },
     contact: {
@@ -33,12 +34,12 @@
     ui: {
       ar: {
         open: "افتح محادثة مكه", close: "إغلاق المحادثة", placeholder: "اكتب سؤالك…", send: "إرسال",
-        typing: "مكه تكتب", managerLabel: "المدير", contactLabel: "التواصل", addressLabel: "العنوان",
+        typing: "مكه تكتب", managerLabel: "مدير المشروعات", contactLabel: "التواصل", addressLabel: "العنوان",
         hoursLabel: "ساعات المعرض", phoneLabel: "الجوال", emailLabel: "البريد", quickLabel: "اقتراحات"
       },
       en: {
         open: "Open Makkah chat", close: "Close chat", placeholder: "Type your question…", send: "Send",
-        typing: "Makkah is typing", managerLabel: "Manager", contactLabel: "Contact", addressLabel: "Address",
+        typing: "Makkah is typing", managerLabel: "Project Manager", contactLabel: "Contact", addressLabel: "Address",
         hoursLabel: "Showroom hours", phoneLabel: "Mobile", emailLabel: "Email", quickLabel: "Suggestions"
       }
     },
@@ -47,7 +48,7 @@
       en: ["Hello, I'm Makkah. The answer file could not be loaded. Use the buttons to reach us directly."]
     },
     quickReplies: [
-      { id: "manager", label: { ar: "بيانات المدير", en: "Manager" } },
+      { id: "manager", label: { ar: "مدير المشروعات", en: "Project manager" } },
       { id: "contact", label: { ar: "التواصل", en: "Contact" } }
     ],
     actionCatalog: [
@@ -292,6 +293,13 @@
         titleEl.className = "mk-sub";
         titleEl.textContent = t(pack.manager.title, lang);
         card.appendChild(titleEl);
+        var mgrPhone = pack.manager.phoneDisplay || (pack.contact && pack.contact.phoneDisplay);
+        if (mgrPhone) {
+          var mgrNum = document.createElement("b");
+          mgrNum.className = "mk-ltr";
+          mgrNum.textContent = mgrPhone;
+          card.appendChild(mgrNum);
+        }
         if (pack.manager.note) {
           var note = document.createElement("p");
           note.textContent = t(pack.manager.note, lang);

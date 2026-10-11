@@ -1,5 +1,5 @@
 {
-  "_edit": "كل ردود شات بوت «مكه» وبيانات المدير والتواصل تتعدل من هذا الملف فقط، بدون إعادة بناء الصفحات. اسم المدير مأخوذ من الاسم العام لحساب GitHub صاحب الموقع (Eng. Yousef Ahmed) — غيّره هنا لو الاسم أو المسمى مختلف.",
+  "_edit": "كل ردود شات بوت «مكه» وبيانات مدير المشروعات والتواصل تتعدل من هذا الملف فقط، بدون إعادة بناء الصفحات.",
   "id": "makkah",
   "name": { "ar": "مكه", "en": "Makkah" },
   "role": { "ar": "مساعدة مؤسسة كنف", "en": "Kanaf assistant" },
@@ -17,11 +17,13 @@
     "reviewCount": "23"
   },
   "manager": {
-    "name": { "ar": "م. يوسف أحمد", "en": "Eng. Yousef Ahmed" },
-    "title": { "ar": "مدير المؤسسة", "en": "General Manager" },
+    "name": { "ar": "المهندس محمد طلعت", "en": "Eng. Mohamed Talat" },
+    "title": { "ar": "مدير المشروعات", "en": "Project Manager" },
+    "phone": "+966568646500",
+    "phoneDisplay": "+966 56 864 6500",
     "note": {
-      "ar": "التواصل مع الإدارة يتم على رقم المؤسسة نفسه، اتصال أو واتساب.",
-      "en": "Management can be reached on the same company number, by call or WhatsApp."
+      "ar": "رقم التواصل معه: +966 56 864 6500 — اتصال أو واتساب.",
+      "en": "His contact number is +966 56 864 6500 — call or WhatsApp."
     }
   },
   "contact": {
@@ -47,7 +49,7 @@
       "send": "إرسال",
       "typing": "مكه تكتب",
       "you": "أنت",
-      "managerLabel": "المدير",
+      "managerLabel": "مدير المشروعات",
       "contactLabel": "التواصل",
       "addressLabel": "العنوان",
       "hoursLabel": "ساعات المعرض",
@@ -63,7 +65,7 @@
       "send": "Send",
       "typing": "Makkah is typing",
       "you": "You",
-      "managerLabel": "Manager",
+      "managerLabel": "Project Manager",
       "contactLabel": "Contact",
       "addressLabel": "Address",
       "hoursLabel": "Showroom hours",
@@ -84,7 +86,7 @@
     ]
   },
   "quickReplies": [
-    { "id": "manager", "label": { "ar": "بيانات المدير", "en": "Manager" } },
+    { "id": "manager", "label": { "ar": "مدير المشروعات", "en": "Project manager" } },
     { "id": "contact", "label": { "ar": "التواصل", "en": "Contact" } },
     { "id": "services", "label": { "ar": "خدماتنا", "en": "Services" } },
     { "id": "quote", "label": { "ar": "طلب معاينة", "en": "Request a survey" } }
@@ -144,10 +146,10 @@
     },
     {
       "id": "manager",
-      "keywords": ["مدير", "المدير", "الادارة", "الإدارة", "يوسف", "مدير المؤسسة", "manager", "general manager", "yousef", "who is in charge", "owner"],
+      "keywords": ["مدير", "المدير", "مدير المؤسسة", "مدير المشروعات", "الادارة", "الإدارة", "محمد", "طلعت", "محمد طلعت", "manager", "project manager", "mohamed", "mohammed", "talat", "who is in charge"],
       "reply": {
-        "ar": ["مدير مؤسسة كنف هو م. يوسف أحمد. هذا مسار التواصل المباشر مع الإدارة:"],
-        "en": ["Kanaf is managed by Eng. Yousef Ahmed. Here is the direct contact path:"]
+        "ar": ["مدير المشروعات في مؤسسة كنف هو المهندس محمد طلعت. رقم التواصل معه +966 56 864 6500."],
+        "en": ["The project manager at Kanaf is Eng. Mohamed Talat. His contact number is +966 56 864 6500."]
       },
       "show": ["manager"],
       "actions": ["call", "whatsapp", "email"]
@@ -156,8 +158,8 @@
       "id": "phone",
       "keywords": ["جوال", "جوالك", "رقم", "هاتف", "تلفون", "اتصال", "كلم", "phone", "mobile", "call", "number"],
       "reply": {
-        "ar": ["رقم المؤسسة للاتصال وواتساب هو +966 56 864 6500."],
-        "en": ["The company number for calls and WhatsApp is +966 56 864 6500."]
+        "ar": ["رقم التواصل مع المهندس محمد طلعت، مدير المشروعات، هو +966 56 864 6500 — اتصال وواتساب."],
+        "en": ["The contact number for Eng. Mohamed Talat, Project Manager, is +966 56 864 6500 — call and WhatsApp."]
       },
       "actions": ["call", "whatsapp"]
     },
@@ -203,8 +205,8 @@
       "id": "contact",
       "keywords": ["تواصل", "تواصلوا", "اتصل", "بيانات التواصل", "معلومات التواصل", "كيف اتواصل", "contact", "reach", "get in touch"],
       "reply": {
-        "ar": ["هذه بيانات التواصل مع مؤسسة كنف ومع المدير على نفس الرقم:"],
-        "en": ["Here is how to reach Kanaf. The manager uses the same number:"]
+        "ar": ["للتواصل مع المهندس محمد طلعت، مدير المشروعات، أو مع المؤسسة:"],
+        "en": ["To reach Eng. Mohamed Talat, Project Manager, or the company:"]
       },
       "show": ["manager", "contact"],
       "actions": ["call", "whatsapp", "email", "quote", "directions"]
@@ -225,7 +227,6 @@
         "ar": ["مؤسسة كنف الأمان للمراقبة الأمنية (KANAF Systems) مؤسسة سعودية تأسست عام 2024 في مكة المكرمة. نعمل في توريد وتركيب وصيانة كاميرات المراقبة والأنظمة الأمنية وإنذار الحريق والشبكات. تقييمنا 4.8 على خرائط جوجل."],
         "en": ["Kanaf Security Systems (KANAF Systems) is a Saudi establishment founded in 2024 in Makkah. We supply, install and maintain CCTV, security systems, fire alarms and networks. Our Google rating is 4.8."]
       },
-      "show": ["manager"],
       "actions": ["call", "whatsapp"]
     },
     {
@@ -303,7 +304,7 @@
     },
     {
       "id": "services",
-      "keywords": ["خدمات", "خدمه", "خدمة", "ايش تسوون", "ماذا تقدم", "services", "what do you do", "offer"],
+      "keywords": ["خدمات", "خدمه", "خدمة", "ايش تسوون", "ماذا تقدم", "سلامة", "أنظمة السلامة", "انظمة السلامة", "متكاملة", "أنظمة أمنية", "انظمة امنية", "إدارة المشاريع", "ادارة المشاريع", "services", "what do you do", "offer", "safety", "integrated", "security systems", "project management"],
       "reply": {
         "ar": ["نغطي عشر خدمات رئيسية: من دراسة الاحتياج إلى التوريد والتركيب والبرمجة ثم الدعم والصيانة."],
         "en": ["We cover ten core services, from the needs study through supply, installation and programming to support and maintenance."]
@@ -334,9 +335,10 @@
   ],
   "fallback": {
     "reply": {
-      "ar": ["ما عندي إجابة دقيقة على هذا السؤال داخل معلومات الموقع. تواصل مع المدير أو الفريق مباشرة وبيراجعون احتياجك."],
-      "en": ["I don't have a precise answer to that in the website information. Contact the manager or the team directly and they will review your request."]
+      "ar": ["السؤال ده مش موجود في معلومات الموقع. للتواصل والرد على استفسارك، هذه بيانات المهندس محمد طلعت، مدير المشروعات:"],
+      "en": ["This question is not covered by the website information. For an answer to your inquiry, here is how to reach Eng. Mohamed Talat, Project Manager:"]
     },
-    "actions": ["call", "whatsapp", "quote"]
+    "show": ["manager", "contact"],
+    "actions": ["call", "whatsapp", "email"]
   }
 }
