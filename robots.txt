@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kanaf-systems.netlify.app/sitemap.xml
