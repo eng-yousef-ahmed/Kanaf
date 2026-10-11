@@ -18,7 +18,21 @@
   /* القائمة الجوالة */
   var burger = document.getElementById("burger"), menu = document.getElementById("navLinks");
   if (burger && menu) {
-    burger.addEventListener("click", function () { burger.classList.toggle("open"); menu.classList.toggle("open"); });
+    function closeMenu() { burger.classList.remove("open"); menu.classList.remove("open"); }
+    burger.addEventListener("click", function (e) {
+      e.stopPropagation();
+      burger.classList.toggle("open"); menu.classList.toggle("open");
+    });
+    /* إغلاق القائمة عند الضغط خارجها أو اختيار رابط */
+    document.addEventListener("click", function (e) {
+      if (menu.classList.contains("open") && !menu.contains(e.target)) { closeMenu(); }
+    });
+    menu.addEventListener("click", function (e) {
+      if (e.target.closest("a")) { closeMenu(); }
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") { closeMenu(); }
+    });
   }
 
   /* فلتر معرض الأعمال (في الصفحة الإنجليزية) */

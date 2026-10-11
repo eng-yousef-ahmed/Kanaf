@@ -160,6 +160,8 @@ def arabic_shared():
     fs_ = index.find("<footer>")
     footer = rewrite_arabic_links(index[fs_:index.find("</footer>") + len("</footer>")], "")
     fl = index.find('<a class="wa-float"')
+    if fl == -1:  # أيقونة واتساب حُذفت — البوت هو العنصر العائم الوحيد
+        fl = index.find('<!-- شات بوت «مكة»')
     floats = index[fl:index.find('<button id="toTop"', fl)]
     icon = re.search(r'<link rel="icon"[^>]*>', index).group(0)
     return {"sprite": sprite, "header": header, "footer": footer, "floats": floats, "icon": icon}
@@ -244,11 +246,48 @@ def en_footer():
     ) % (svc_links, PHONE, EMAIL, EMAIL)
 
 
-EN_FLOATS = ('<a class="wa-float" href="%s" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">'
-             '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm5.4 14.2c-.23.65-1.34 1.25-1.87 1.32-.5.07-1.13.1-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.170-4.94-4.36-.14-.2-1.18-1.57-1.18-3s.75-2.12 1.02-2.41c.26-.29.58-.36.77-.36h.55c.18 0 .42-.07.65.5.24.57.8 1.97.87 2.11.07.14.12.31.02.5-.09.2-.14.31-.28.48l-.43.5c-.14.14-.29.3-.12.58.16.29.73 1.2 1.57 1.95 1.08.96 2 1.26 2.28 1.4.28.15.45.13.62-.07.16-.2.7-.82.9-1.1.19-.29.38-.24.64-.15.26.1 1.66.79 1.95.93.28.14.47.21.54.33.07.12.07.7-.16 1.35Z"/></svg></a>\n'
-             ) % WA
+# أيقونة واتساب العائمة حُذفت نهائيًا — استُبدلت بشات بوت «مكة» (MK_BOT أدناه)
 
 TOP_BTN = ('<button id="toTop" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 19V5m-7 7 7-7 7 7"/></svg></button>\n')
+
+
+def mk_bot(lang):
+    """شات بوت «مكة» — يُبنى من نفس قالب index.html العربية، بنسخة إنجليزية مطابقة."""
+    if lang == "en":
+        return (
+            '<div id="mkBot" role="region" aria-label="Makkah chatbot">\n'
+            '  <button id="mkFab" aria-expanded="false" aria-controls="mkPanel" aria-label="Open Makkah chat, Kanaf assistant">\n'
+            '    <span class="mk-badge" aria-hidden="true"></span>\n'
+            '    <svg class="mk-ico mk-ico-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.8-.8L3 20l1.3-4.2a8.4 8.4 0 1 1 7.7-11.4 8.4 8.4 0 0 1 9 8.4v.1Z"/></svg>\n'
+            '    <svg class="mk-ico mk-ico-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>\n'
+            '  </button>\n'
+            '  <div id="mkPanel" hidden>\n'
+            '    <div class="mk-head">\n'
+            '      <div class="mk-avatar" aria-hidden="true">M</div>\n'
+            '      <div class="mk-id"><b>Makkah<span class="mk-dot" title="Online now" aria-hidden="true"></span></b>'
+            '<small>Kanaf smart assistant • replies instantly</small></div>\n'
+            '      <a class="mk-wa" href="' + WA + '" target="_blank" rel="noopener" aria-label="Continue on WhatsApp">\n'
+            '        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm5.4 14.2c-.23.65-1.34 1.25-1.87 1.32-.5.07-1.13.1-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.2-1.18-1.57-1.18-3s.75-2.12 1.02-2.41c.26-.29.58-.36.77-.36h.55c.18 0 .42-.07.65.5.24.57.8 1.97.87 2.11.07.14.12.31.02.5-.09.2-.14.31-.28.48l-.43.5c-.14.14-.29.3-.12.58.16.29.73 1.2 1.57 1.95 1.08.96 2 1.26 2.28 1.4.28.15.45.13.62-.07.16-.2.7-.82.9-1.1.19-.29.38-.24.64-.15.26.1 1.66.79 1.95.93.28.14.47.21.54.33.07.12.07.7-.16 1.35Z"/></svg>\n'
+            '      </a>\n'
+            '    </div>\n'
+            '    <div class="mk-log" id="mkLog" aria-live="polite"></div>\n'
+            '    <div class="mk-chips" id="mkChips"></div>\n'
+            '    <form class="mk-form" id="mkForm" autocomplete="off">\n'
+            '      <input id="mkInput" type="text" placeholder="Type your question…" aria-label="Your message to Makkah">\n'
+            '      <button type="submit" aria-label="Send message">\n'
+            '        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg>\n'
+            '      </button>\n'
+            '    </form>\n'
+            '  </div>\n'
+            '</div>\n'
+        )
+    # النسخة العربية: تُستخرج حرفيًا من index.html (مصدر واحد بلا تكرار)
+    idx = read("index.html")
+    a = idx.find('<!-- شات بوت «مكة»')
+    if a == -1:
+        a = idx.find('<div id="mkBot"')
+    b = idx.find('<button id="toTop"', a)
+    return idx[a:b].rstrip() + "\n"
 
 
 def head(lang, title, desc, keywords, canonical, og_type, icon, alternates, extra_ld=""):
@@ -268,7 +307,9 @@ def head(lang, title, desc, keywords, canonical, og_type, icon, alternates, extr
         '<meta property="og:title" content="%(title)s">\n'
         '<meta property="og:description" content="%(desc)s">\n'
         '<meta property="og:url" content="%(canonical)s">\n'
-        '<meta name="twitter:card" content="summary">\n'
+        '<meta property="og:image" content="https://kanaf-systems.netlify.app/assets/images/og-image.png">\n'
+        '<meta name="twitter:card" content="summary_large_image">\n'
+        '<meta name="twitter:image" content="https://kanaf-systems.netlify.app/assets/images/og-image.png">\n'
         '%(icon)s\n%(fonts)s%(css)s%(extra_ld)s'
         '</head>\n<body class="svc-page">\n'
     ) % {"lang": lang, "dir": "rtl" if lang == "ar" else "ltr", "title": esc(title), "desc": esc(desc),
@@ -282,10 +323,28 @@ def ld(obj):
     return '<script type="application/ld+json">%s</script>\n' % json.dumps(obj, ensure_ascii=False)
 
 
+def services_js():
+    """قائمة الخدمات للبوت — تُولَّد من content/services.json + services.en.json
+    (مصدر واحد للحقيقة، بلا تكرار يدوي)."""
+    ar = json.loads(read("content/services.json"))
+    en = json.loads(read("content/services.en.json"))
+    rows = []
+    for x in ar["services"]:
+        e = en.get(x["slug"]) or {}
+        lead = x.get("lead") if isinstance(x.get("lead"), str) else ""
+        rows.append({
+            "slug": x["slug"], "name": x["name"], "lead": lead,
+            "enName": e.get("name", ""), "enLead": e.get("lead", "") if isinstance(e.get("lead"), str) else "",
+        })
+    return "<script>window.KANAF_SERVICES=%s;</script>\n" % json.dumps(rows, ensure_ascii=False, separators=(",", ":"))
+
+
 def scripts(lang):
     s = '<script src="@@content/site-data.js"></script>\n'
     if lang == "en":
         s += '<script src="@@content/site-data.en.js"></script>\n'
+    s += services_js()
+    s += '<script src="@@assets/js/makkah-bot.js" defer></script>\n'
     return s
 
 
@@ -566,7 +625,7 @@ def render_en_home():
     body_parts = {"sprite": parts["sprite"], "header": en_header(), "footer": en_footer()}
     page = head("en", title, desc, keywords, canonical, "website", parts["icon"], alts, ld(local))
     return page + body_parts["sprite"] + '\n<div id="progressBar"></div>\n' + body_parts["header"] + main + \
-        body_parts["footer"] + "\n" + EN_FLOATS + TOP_BTN + scripts("en") + \
+        body_parts["footer"] + "\n" + mk_bot("en") + TOP_BTN + scripts("en") + \
         '<script src="@@assets/js/render.js"></script>\n<script src="@@assets/js/quote.js"></script>\n' \
         '<script src="@@assets/js/site.js"></script>\n</body>\n</html>\n', "en/index.html"
 
@@ -634,7 +693,7 @@ def main():
     # --- English ---
     page, path = render_en_home()
     write(path, page)
-    en_parts = {"sprite": ar_parts["sprite"], "header": "", "footer": "", "floats": EN_FLOATS, "icon": ar_parts["icon"]}
+    en_parts = {"sprite": ar_parts["sprite"], "header": "", "footer": "", "floats": mk_bot("en"), "icon": ar_parts["icon"]}
     en_parts["header"] = en_header()
     en_parts["footer"] = en_footer()
     en_services = []

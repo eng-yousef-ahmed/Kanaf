@@ -15,10 +15,22 @@
       "Cable routing, termination, and configuration.",
       "Testing of image and recording quality, and user training."
     ],
-    "forWho": ["Shops and stores", "Offices and commercial buildings", "Schools and hospitals", "Warehouses and industrial sites", "Large residential compounds"],
+    "forWho": [
+      "Shops and stores",
+      "Offices and commercial buildings",
+      "Schools and hospitals",
+      "Warehouses and industrial sites",
+      "Large residential compounds"
+    ],
     "faq": [
-      { "q": "What is the difference between IP and analog cameras?", "a": "IP cameras send video over a network and offer higher resolution and easier remote management. Analog cameras use dedicated cabling and are usually cheaper for small projects. We recommend the best fit after the site survey." },
-      { "q": "Does the service include recording devices?", "a": "Yes. We supply DVR or NVR recorders based on the camera type and number of points, and size the storage for the retention period you need." }
+      {
+        "q": "What is the difference between IP and analog cameras?",
+        "a": "IP cameras send video over a network and offer higher resolution and easier remote management. Analog cameras use dedicated cabling and are usually cheaper for small projects. We recommend the best fit after the site survey."
+      },
+      {
+        "q": "Does the service include recording devices?",
+        "a": "Yes. We supply DVR or NVR recorders based on the camera type and number of points, and size the storage for the retention period you need."
+      }
     ],
     "keywords": "CCTV cameras, CCTV installation Makkah, IP cameras, analog cameras, DVR, NVR, security cameras Saudi Arabia"
   },
@@ -37,10 +49,21 @@
       "User permission setup and recording retention settings.",
       "Training for the operations team and a short user guide."
     ],
-    "forWho": ["Shopping malls", "Government and private facilities", "Factories and warehouses", "Multi-branch sites"],
+    "forWho": [
+      "Shopping malls",
+      "Government and private facilities",
+      "Factories and warehouses",
+      "Multi-branch sites"
+    ],
     "faq": [
-      { "q": "Can I monitor the system from my phone?", "a": "Yes, depending on the devices selected. We confirm this in the quotation." },
-      { "q": "Do you cover multi-branch facilities?", "a": "Yes. We design the system so that all branches can be managed from a central location if you wish." }
+      {
+        "q": "Can I monitor the system from my phone?",
+        "a": "Yes, depending on the devices selected. We confirm this in the quotation."
+      },
+      {
+        "q": "Do you cover multi-branch facilities?",
+        "a": "Yes. We design the system so that all branches can be managed from a central location if you wish."
+      }
     ],
     "keywords": "security surveillance systems, integrated security system, facility security Makkah"
   },
@@ -59,9 +82,21 @@
       "Integration with alarm and surveillance systems where needed.",
       "Testing, handover, and post-installation support."
     ],
-    "forWho": ["Residential and commercial buildings", "Factories and warehouses", "Schools and institutions", "Hotels and hospitality facilities"],
+    "forWho": [
+      "Residential and commercial buildings",
+      "Factories and warehouses",
+      "Schools and institutions",
+      "Hotels and hospitality facilities"
+    ],
     "faq": [
-      { "q": "Do you provide solutions for existing facilities?", "a": "Yes. We survey the site and propose the necessary additions or changes, minimizing disruption to operations where possible." }
+      {
+        "q": "Do you provide solutions for existing facilities?",
+        "a": "Yes. We survey the site and propose the necessary additions or changes, minimizing disruption to operations where possible."
+      },
+      {
+        "q": "What is the difference between smoke and heat detectors?",
+        "a": "Smoke detectors sense combustion particles early and suit rooms and offices, while heat detectors respond to a rapid rise in temperature and suit kitchens and warehouses. A proper design usually combines both types depending on each area."
+      }
     ],
     "keywords": "safety systems, safety equipment, facility safety solutions, Makkah"
   },
@@ -80,10 +115,21 @@
       "Testing of every point and a full alarm test.",
       "Operation and maintenance guide, with periodic maintenance for the system."
     ],
-    "forWho": ["Residential and commercial buildings", "Warehouses and factories", "Hospitals and schools", "Hotels and complexes"],
+    "forWho": [
+      "Residential and commercial buildings",
+      "Warehouses and factories",
+      "Hospitals and schools",
+      "Hotels and complexes"
+    ],
     "faq": [
-      { "q": "Does the installation need maintenance after handover?", "a": "Yes. Alarm systems need periodic inspection to confirm they are ready to operate. We offer maintenance contracts for this." },
-      { "q": "Do you cover multiple sites?", "a": "Yes. We work to standardize the systems across different sites under one management approach." }
+      {
+        "q": "Does the installation need maintenance after handover?",
+        "a": "Yes. Alarm systems need periodic inspection to confirm they are ready to operate. We offer maintenance contracts for this."
+      },
+      {
+        "q": "Do you cover multiple sites?",
+        "a": "Yes. We work to standardize the systems across different sites under one management approach."
+      }
     ],
     "keywords": "fire alarm system, smoke detectors, fire alarm Makkah, fire safety"
   },
@@ -102,10 +148,21 @@
       "A dedicated network for surveillance and control systems.",
       "Network configuration and speed and stability testing."
     ],
-    "forWho": ["Offices and administrative buildings", "Schools and universities", "Factories and warehouses", "Multi-department facilities"],
+    "forWho": [
+      "Offices and administrative buildings",
+      "Schools and universities",
+      "Factories and warehouses",
+      "Multi-department facilities"
+    ],
     "faq": [
-      { "q": "Do you only install wireless networks?", "a": "No. We implement both wired and wireless networks and define the right mix for each location." },
-      { "q": "Can you prepare the network for a new project before finishing works?", "a": "Yes. Early coordination with the contractor saves time and cost." }
+      {
+        "q": "Do you only install wireless networks?",
+        "a": "No. We implement both wired and wireless networks and define the right mix for each location."
+      },
+      {
+        "q": "Can you prepare the network for a new project before finishing works?",
+        "a": "Yes. Early coordination with the contractor saves time and cost."
+      }
     ],
     "keywords": "structured cabling, wired and wireless networks, internal internet, IT infrastructure, Makkah"
   },
@@ -124,10 +181,21 @@
       "Programming of permissions, time schedules, and access reports.",
       "Integration with surveillance where needed."
     ],
-    "forWho": ["Hotels and residential compounds", "Offices and administrative buildings", "Schools and universities", "Factories and warehouses"],
+    "forWho": [
+      "Hotels and residential compounds",
+      "Offices and administrative buildings",
+      "Schools and universities",
+      "Factories and warehouses"
+    ],
     "faq": [
-      { "q": "Can I add users or change permissions later?", "a": "Yes. The system is built to be managed and updated easily as your facility changes." },
-      { "q": "What identification methods are available?", "a": "Options include cards, fingerprints, and access codes, depending on the devices selected. We explain the best choices during the survey." }
+      {
+        "q": "Can I add users or change permissions later?",
+        "a": "Yes. The system is built to be managed and updated easily as your facility changes."
+      },
+      {
+        "q": "What identification methods are available?",
+        "a": "Options include cards, fingerprints, and access codes, depending on the devices selected. We explain the best choices during the survey."
+      }
     ],
     "keywords": "access control, intercom systems, access control Makkah, electric gates, fingerprint access"
   },
@@ -146,10 +214,21 @@
       "Repair of faults and supply of spare parts when needed.",
       "A report after each visit explaining the condition and actions taken."
     ],
-    "forWho": ["Shops and stores", "Schools and hospitals", "Offices and industrial sites", "Any facility with an existing surveillance system"],
+    "forWho": [
+      "Shops and stores",
+      "Schools and hospitals",
+      "Offices and industrial sites",
+      "Any facility with an existing surveillance system"
+    ],
     "faq": [
-      { "q": "Do you maintain systems installed by other companies?", "a": "Yes, after we survey the existing systems and confirm their condition." },
-      { "q": "Is maintenance under a contract or on request?", "a": "Both options are available: regular visits under a contract, or on-request service. We explain the difference in the quotation." }
+      {
+        "q": "Do you maintain systems installed by other companies?",
+        "a": "Yes, after we survey the existing systems and confirm their condition."
+      },
+      {
+        "q": "Is maintenance under a contract or on request?",
+        "a": "Both options are available: regular visits under a contract, or on-request service. We explain the difference in the quotation."
+      }
     ],
     "keywords": "CCTV maintenance, camera maintenance Makkah, security system maintenance"
   },
@@ -168,9 +247,21 @@
       "Programming of integration rules and shared alerts.",
       "Team training and operations guide."
     ],
-    "forWho": ["Large complexes", "Facilities with multiple systems", "Companies expanding across branches", "Government and semi-government projects"],
+    "forWho": [
+      "Large complexes",
+      "Facilities with multiple systems",
+      "Companies expanding across branches",
+      "Government and semi-government projects"
+    ],
     "faq": [
-      { "q": "Can we start with part of the system and expand later?", "a": "Yes. We design the solution so it accepts additions later without rebuilding everything." }
+      {
+        "q": "Can we start with part of the system and expand later?",
+        "a": "Yes. We design the solution so it accepts additions later without rebuilding everything."
+      },
+      {
+        "q": "Can existing legacy systems be integrated with new ones?",
+        "a": "Yes. In most cases existing cameras, recorders and control panels can be connected to a unified management platform through open protocols such as ONVIF, without a full replacement — lowering cost and speeding up delivery."
+      }
     ],
     "keywords": "integrated security systems, security systems integration, security platform Makkah"
   },
@@ -189,9 +280,21 @@
       "Training staff on how to use the systems.",
       "Periodic reports on system status."
     ],
-    "forWho": ["Companies and institutions", "Multi-branch facilities", "Administrative offices", "Schools and hospitals"],
+    "forWho": [
+      "Companies and institutions",
+      "Multi-branch facilities",
+      "Administrative offices",
+      "Schools and hospitals"
+    ],
     "faq": [
-      { "q": "How do I request technical support?", "a": "Through WhatsApp, by phone, or through the quotation form on the website." }
+      {
+        "q": "How do I request technical support?",
+        "a": "Through WhatsApp, by phone, or through the quotation form on the website."
+      },
+      {
+        "q": "Does support include staff training?",
+        "a": "Yes. Handing over any system includes a practical training session for operators on live view, recording search, backup and fault reporting, along with a simple operator guide."
+      }
     ],
     "keywords": "technical support for companies, security systems support, Makkah"
   },
@@ -210,10 +313,21 @@
       "Supply of spare parts as agreed.",
       "An annual review of the systems with suggested improvements."
     ],
-    "forWho": ["Facilities that depend on their systems every day", "Schools and hospitals", "Hotels and complexes", "Factories and warehouses"],
+    "forWho": [
+      "Facilities that depend on their systems every day",
+      "Schools and hospitals",
+      "Hotels and complexes",
+      "Factories and warehouses"
+    ],
     "faq": [
-      { "q": "What determines the contract price?", "a": "The number of systems and points, the number of visits, and the response level required. We prepare a detailed quotation after the survey." },
-      { "q": "Does the contract include spare parts?", "a": "This is defined in the contract terms as agreed with the client." }
+      {
+        "q": "What determines the contract price?",
+        "a": "The number of systems and points, the number of visits, and the response level required. We prepare a detailed quotation after the survey."
+      },
+      {
+        "q": "Does the contract include spare parts?",
+        "a": "This is defined in the contract terms as agreed with the client."
+      }
     ],
     "keywords": "security system maintenance contracts, camera maintenance contract, technical support contracts, Makkah"
   },
@@ -232,9 +346,21 @@
       "Testing and handover with the required documents.",
       "A closing report and a post-handover support plan."
     ],
-    "forWho": ["Companies carrying out expansions or new branches", "Government and semi-government projects", "Facilities with more than one contractor", "Seasonal and temporary operations"],
+    "forWho": [
+      "Companies carrying out expansions or new branches",
+      "Government and semi-government projects",
+      "Facilities with more than one contractor",
+      "Seasonal and temporary operations"
+    ],
     "faq": [
-      { "q": "Can you work alongside another contractor on the same project?", "a": "Yes. We coordinate between the parties to ensure a complete handover." }
+      {
+        "q": "Can you work alongside another contractor on the same project?",
+        "a": "Yes. We coordinate between the parties to ensure a complete handover."
+      },
+      {
+        "q": "What does project management with Kanaf include?",
+        "a": "Site survey and needs assessment, design and specification, procurement and installation scheduling, quality supervision during execution, testing and documented handover, then post-handover performance follow-up."
+      }
     ],
     "keywords": "IT project management, technical project management, surveillance project delivery, Makkah"
   }
