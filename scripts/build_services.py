@@ -43,61 +43,58 @@ def esc(s):
     return html.escape(str(s), quote=True)
 
 
-def rewrite_links(fragment, in_services_dir=True):
-    """يحوّل روابط الـ SPA (#section) لروابط للصفحة الرئيسية، وروابط الخدمات للملفات المجاورة."""
-    prefix = "../index.html" if in_services_dir else "index.html"
+def rewrite_links(fragment, here="services"):
+    """يحوّل روابط الصفحة الرئيسية (#section) لروابط للملف الرئيسي، ويعدّل روابط الملفات المجاورة.
+    here: المجلد اللي فيه الصفحة (services أو blog) — الاتنين على مستوى واحد تحت الجذر."""
+    prefix = "../index.html"
     fragment = fragment.replace('<a class="logo" href="#home" data-nav="home">',
                                 '<a class="logo" href="%s">' % prefix)
     fragment = fragment.replace('data-nav="home" class="active"', 'data-nav="home"')
     fragment = re.sub(r'href="#home" data-nav="home"', 'href="%s"' % prefix, fragment)
-    fragment = re.sub(r'href="#(\w+)" data-nav="\1"', lambda m: 'href="%s#%s"' % (prefix, m.group(1)), fragment)
-    fragment = fragment.replace('href="services/', 'href="')
-    # أزرار صفحات الخدمات في الفوتر تشير لملفات بجوار بعض
+    fragment = re.sub(r'href="#(\w+)" data-nav="\1"',
+                      lambda m: 'href="%s#%s"' % (prefix, m.group(1)), fragment)
+    if here == "services":
+        fragment = fragment.replace('href="services/', 'href="')
+        fragment = fragment.replace('href="blog/index.html"', 'href="../blog/index.html"')
+    else:
+        fragment = fragment.replace('href="services/', 'href="../services/')
+        fragment = fragment.replace('href="blog/index.html"', 'href="index.html"')
     fragment = re.sub(r'\sdata-nav="[^"]*"', "", fragment)
     return fragment
 
 
-def main():
+def shared_parts(here="services"):
+    """أجزاء الصفحة المشتركة (الأيقونات، الهيدر، الفوتر، زر واتساب) مأخوذة من index.html."""
     index = read("index.html")
-    data = json.loads(read("content/services.json"))
-    services = data["services"]
-
-    # ----- أجزاء مشتركة من الصفحة الرئيسية -----
     body_start = index.find("<body")
-    sprite_start = index.find("<svg", body_start)
-    sprite_end = index.find('<div id="preloader"')
-    sprite = index[sprite_start:sprite_end]
-
-    header_start = index.find('<div class="topbar">')
-    header_end = index.find("<main>")
-    header = rewrite_links(index[header_start:header_end])
-
-    footer_start = index.find("<footer>")
-    footer_end = index.find("</footer>") + len("</footer>")
-    footer = rewrite_links(index[footer_start:footer_end])
-
-    float_start = index.find('<a class="wa-float"')
-    float_end = index.find("<script>", float_start)
-    floats = index[float_start:float_end]
-
+    sprite = index[index.find("<svg", body_start):index.find('<div id="preloader"')]
+    header = rewrite_links(index[index.find('<div class="topbar">'):index.find("<main>")], here)
+    fs_ = index.find("<footer>")
+    footer = rewrite_links(index[fs_:index.find("</footer>") + len("</footer>")], here)
+    fl = index.find('<a class="wa-float"')
+    floats = index[fl:index.find("<script>", fl)]
     icon_link = re.search(r'<link rel="icon"[^>]*>', index).group(0)
     fonts = "".join(
         '<link rel="stylesheet" href="../assets/fonts/%s">\n' % f
         for f in ["tajawal-400.css", "tajawal-700.css", "tajawal-800.css", "cairo-800.css", "cairo-900.css"]
     )
+    return {"sprite": sprite, "header": header, "footer": footer, "floats": floats,
+            "icon": icon_link, "fonts": fonts}
 
+
+def main():
+    services = json.loads(read("content/services.json"))["services"]
+    parts = shared_parts("services")
     out_dir = os.path.join(ROOT, "services")
     os.makedirs(out_dir, exist_ok=True)
-
-    slugs = [s["slug"] for s in services]
     for svc in services:
-        page = render(svc, sprite, header, footer, floats, icon_link, fonts, services)
+        page = render(svc, parts["sprite"], parts["header"], parts["footer"], parts["floats"],
+                      parts["icon"], parts["fonts"], services)
         path = os.path.join(out_dir, svc["slug"] + ".html")
         with open(path, "w", encoding="utf-8", newline="\n") as f:
             f.write(page)
         print("built", os.path.relpath(path, ROOT))
-
-    print("done: %d pages" % len(slugs))
+    print("done: %d pages" % len(services))
 
 
 def render(svc, sprite, header, footer, floats, icon_link, fonts, all_services):
