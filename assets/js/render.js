@@ -26,7 +26,9 @@
   /* لو الصورة مش موجودة، الإطار بيفضل بخلفية متدرجة (من CSS) */
   function img(src, alt) {
     if (!src) { return ""; }
-    return '<img src="' + esc(src) + '" alt="' + esc(alt) + '" loading="lazy" onerror="this.style.visibility=\'hidden\'">';
+    var path = String(src);
+    if (EN && !/^(?:[a-z]+:|\/|data:)/i.test(path)) path = "../" + path;
+    return '<img src="' + esc(path) + '" alt="' + esc(alt) + '" loading="lazy" decoding="async" onerror="this.style.visibility=\'hidden\'">';
   }
 
   /* دمج النسخة الإنجليزية فوق البيانات العربية عند الحاجة */
@@ -43,8 +45,9 @@
 
   function featuredVisual(p) {
     var locs = (p.locations || []).map(function (l) { return "<span>" + esc(l) + "</span>"; }).join("");
+    var imageNote = p.imageIllustrative ? '<span class="pf-image-note">' + (EN ? "Temporary AI illustration" : "صورة توضيحية مؤقتة بالذكاء الاصطناعي") + "</span>" : "";
     return '<div class="proj-visual">' + img(p.image, p.imageAlt || p.title) +
-      (locs ? '<div class="proj-loc">' + locs + "</div>" : "") + "</div>";
+      imageNote + (locs ? '<div class="proj-loc">' + locs + "</div>" : "") + "</div>";
   }
 
   function featuredStats(p) {
@@ -82,11 +85,14 @@
   if (gridEl) {
     gridEl.innerHTML = projects.filter(function (p) { return p.portfolio !== false; }).map(function (p) {
       var tags = (p.tags || []).map(function (t) { return "<span>" + esc(t) + "</span>"; }).join("");
+      var scope = (p.scope || []).map(function (item) { return "<li>" + esc(item) + "</li>"; }).join("");
+      var imageNote = p.imageIllustrative ? '<span class="pf-image-note">' + (EN ? "Temporary illustration" : "صورة توضيحية مؤقتة") + "</span>" : "";
       return '<div class="pf-card" data-cat="' + esc((p.cats || []).join(" ")) + '">' +
-        '<div class="pf-media"><span class="pf-cat">' + esc(p.sector) + "</span>" + img(p.image, p.imageAlt || p.title) + "</div>" +
+        '<div class="pf-media"><span class="pf-cat">' + esc(p.sector) + "</span>" + img(p.image, p.imageAlt || p.title) + imageNote + "</div>" +
         '<div class="pf-body"><h4>' + esc(p.shortTitle || p.title) + '</h4><span class="cl">' + esc(p.client) + "</span>" +
         "<p>" + esc(p.shortDesc || p.desc) + "</p>" +
-        (tags ? '<div class="pf-tags">' + tags + "</div>" : "") + "</div></div>";
+        (tags ? '<div class="pf-tags">' + tags + "</div>" : "") +
+        (scope ? '<details class="pf-details"><summary>' + (EN ? "Project details" : "تفاصيل المشروع") + '</summary><ul>' + scope + '</ul></details>' : "") + "</div></div>";
     }).join("");
   }
 

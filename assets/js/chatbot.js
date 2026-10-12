@@ -324,6 +324,7 @@
         guardSvg() +
         '<span class="mk-launcher-name"></span>' +
       "</button>" +
+      '<div class="mk-backdrop" aria-hidden="true"></div>' +
       '<section class="mk-panel" id="mkPanel" role="dialog" aria-modal="true" hidden>' +
         '<header class="mk-head">' +
           '<span class="mk-avatar" aria-hidden="true"></span>' +
@@ -334,13 +335,14 @@
         '<div class="mk-quick" role="group"></div>' +
         '<form class="mk-form">' +
           '<label class="mk-sr"></label>' +
-          '<input type="text" maxlength="500" autocomplete="off">' +
+          '<input type="text" maxlength="500" autocomplete="off" enterkeyhint="send">' +
           '<button type="submit"></button>' +
         "</form>" +
       "</section>";
     document.body.appendChild(root);
 
     var launcher = root.querySelector(".mk-launcher");
+    var backdrop = root.querySelector(".mk-backdrop");
     var panel = root.querySelector(".mk-panel");
     var log = root.querySelector(".mk-log");
     var quick = root.querySelector(".mk-quick");
@@ -353,6 +355,8 @@
     var avatar = root.querySelector(".mk-avatar");
     var hello = root.querySelector(".mk-hello");
     var lastFocus = null;
+    var previousBodyOverflow = "";
+    var replyPending = false;
 
     function ui(lang) { return (pack.ui && pack.ui[lang]) || pack.ui.ar; }
 
@@ -501,11 +505,15 @@
       saveState(state);
       if (open) {
         lastFocus = document.activeElement;
+        previousBodyOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
         paintChrome(uiLang);
-        setTimeout(function () { input.focus(); }, 30);
+        setTimeout(function () { if (state.open) input.focus(); }, 30);
       } else {
+        document.body.style.overflow = previousBodyOverflow;
         launcher.hidden = false;
-        if (lastFocus && lastFocus.focus) lastFocus.focus();
+        if (lastFocus && lastFocus.focus && document.contains(lastFocus)) lastFocus.focus();
+        else launcher.focus();
       }
     }
 
@@ -532,16 +540,25 @@
       typing.textContent = ui(lang).typing;
       log.appendChild(typing);
       log.scrollTop = log.scrollHeight;
+      replyPending = true;
+      input.disabled = true;
+      sendBtn.disabled = true;
+      quick.querySelectorAll("button").forEach(function (button) { button.disabled = true; });
       window.setTimeout(function () {
         if (typing.parentNode) typing.parentNode.removeChild(typing);
         replies.forEach(function (line, i) {
           pushBot(line, i === replies.length - 1 ? extras : null, lang, true);
         });
+        replyPending = false;
+        input.disabled = false;
+        sendBtn.disabled = false;
+        quick.querySelectorAll("button").forEach(function (button) { button.disabled = false; });
       }, window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 280);
       if (userText) uiLang = lang;
     }
 
     function ask(text, intentId) {
+      if (replyPending) return;
       var clean = String(text || "").trim().slice(0, 500);
       if (!clean) return;
       var lang = detectLang(clean);
@@ -609,12 +626,23 @@
 
     launcher.addEventListener("click", function () { setOpen(true); });
     closeBtn.addEventListener("click", function () { setOpen(false); });
+    backdrop.addEventListener("click", function () { setOpen(false); });
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       ask(input.value);
     });
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && state.open) setOpen(false);
+      if (!state.open) return;
+      if (e.key === "Escape") { setOpen(false); return; }
+      if (e.key !== "Tab") return;
+      var focusable = panel.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])');
+      if (!focusable.length) { e.preventDefault(); return; }
+      var first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey && (document.activeElement === first || !panel.contains(document.activeElement))) {
+        e.preventDefault(); last.focus();
+      } else if (!e.shiftKey && (document.activeElement === last || !panel.contains(document.activeElement))) {
+        e.preventDefault(); first.focus();
+      }
     });
   }
 

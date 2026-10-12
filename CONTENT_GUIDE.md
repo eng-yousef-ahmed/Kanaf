@@ -15,6 +15,10 @@
 
 > الأرقام والنصوص العامة للموقع (الهاتف، العنوان، الخدمات، الأسئلة الشائعة) لسه داخل `index.html`.
 
+## الصور التوضيحية المؤقتة للمشروعات
+
+صور المعرض الحالية توضيحية مولّدة بالذكاء الاصطناعي، وتظهر عليها علامة توضح ذلك. عند تجهيز الصور الأصلية، استبدل الملف بنفس الاسم داخل `assets/images/projects/`؛ أسماء الملفات المستخدمة هي `hajj-camps.jpg` و`jarir-retail.jpg` و`ajwad-hotel.jpg` و`dar-albasheer-school.jpg` و`alnafea-factory.jpg` و`kanaf-charity-maintenance.jpg`. بعد استبدال كل صورة، غيّر `imageIllustrative: true` إلى `false` في المشروع المقابل داخل `content/site-data.js` لإزالة العلامة، ثم أعد بناء الصفحات.
+
 ## 2) إضافة صور لمشروع
 
 1. ارفع الصورة في `assets/images/projects/` باسم بالإنجليزي بدون مسافات، مثال: `jarir-retail.jpg`.

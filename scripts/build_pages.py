@@ -25,7 +25,7 @@ import sys
 from datetime import date  # noqa: F401  (kept for future use)
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-SITE = "https://kanaf-systems.netlify.app"
+SITE = "https://kanaf-systems.vercel.app"
 PHONE = "+966568646500"
 WA = "https://wa.me/966568646500"
 EMAIL = "Kanaf.S.Systems@gmail.com"
@@ -155,18 +155,26 @@ def rewrite_arabic_links(fragment, here):
 def arabic_shared():
     index = read("index.html")
     body = index.find("<body")
-    sprite = index[index.find("<svg", body):index.find('<div id="preloader"')]
+    sprite = index[index.find("<svg", body):index.find('<div id="progressBar"')]
+    emblem = re.search(r'<symbol id="kanafEmblem".*?</symbol>', sprite, re.S)
+    small_sprite = ('<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>' +
+                    emblem.group(0) + '</defs></svg>') if emblem else sprite
     header = rewrite_arabic_links(index[index.find('<div class="topbar">'):index.find("<main>")], "")
     fs_ = index.find("<footer>")
     footer = rewrite_arabic_links(index[fs_:index.find("</footer>") + len("</footer>")], "")
-    fl = index.find('<a class="wa-float"')
-    floats = index[fl:index.find('<button id="toTop"', fl)]
+    floats = ""
     icon = re.search(r'<link rel="icon"[^>]*>', index).group(0)
-    return {"sprite": sprite, "header": header, "footer": footer, "floats": floats, "icon": icon}
+    return {"sprite": sprite, "small_sprite": small_sprite, "header": header, "footer": footer, "floats": floats, "icon": icon}
 
 
 FONTS = "".join('<link rel="stylesheet" href="@@assets/fonts/%s">\n' % f for f in
                 ["tajawal-400.css", "tajawal-700.css", "tajawal-800.css", "cairo-800.css", "cairo-900.css"])
+FONT_PRELOADS = {
+    "ar": ('<link rel="preload" href="@@assets/fonts/files/tajawal-arabic-400-normal.woff2" as="font" type="font/woff2" crossorigin>\n'
+           '<link rel="preload" href="@@assets/fonts/files/cairo-arabic-900-normal.woff2" as="font" type="font/woff2" crossorigin>\n'),
+    "en": ('<link rel="preload" href="@@assets/fonts/files/tajawal-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>\n'
+           '<link rel="preload" href="@@assets/fonts/files/cairo-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>\n')
+}
 CSS = ('<link rel="stylesheet" href="@@assets/css/site.css">\n'
        '<link rel="stylesheet" href="@@assets/css/extra.css">\n'
        '<link rel="stylesheet" href="@@assets/css/services.css">\n'
@@ -192,19 +200,15 @@ def en_header():
         '    <svg class="logo-emblem" viewBox="0 0 240 250"><use href="#kanafEmblem"/></svg>\n'
         '    <span class="logo-text"><strong>Kanaf</strong><span>KANAF SYSTEMS</span></span>\n'
         '  </a>\n'
-        '  <nav class="nav-links" id="navLinks">\n'
-        '    <a href="@@en/index.html">Home</a>\n'
-        '    <a href="@@en/index.html#about">About</a>\n'
-        '    <a href="@@en/index.html#services">Services</a>\n'
-        '    <a href="@@en/index.html#projects">Projects</a>\n'
-        '    <a href="@@en/blog/index.html">Blog</a>\n'
-        '    <a href="@@en/index.html#location">Location</a>\n'
-        '    <a href="@@en/index.html#faq">FAQ</a>\n'
+        '  <nav class="nav-links" id="navLinks" aria-label="Main navigation">\n'
+        '    <div class="nav-group nav-primary"><a href="@@en/index.html#about">About</a><a href="@@en/index.html#services">Services</a><a href="@@en/index.html#projects">Projects</a></div>\n'
+        '    <span class="nav-divider" aria-hidden="true"></span>\n'
+        '    <div class="nav-group nav-secondary"><a href="@@en/blog/index.html">Blog</a><a href="@@en/index.html#location">Location</a><a href="@@en/index.html#faq">FAQ</a></div>\n'
         '    <a href="@@en/index.html#contact" class="nav-cta">Request a quote</a>\n'
         '  </nav>\n'
         '  <div class="nav-tools">\n'
         '    <a href="@@index.html" class="lang-sw" hreflang="ar" lang="ar">العربية</a>\n'
-        '    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>\n'
+        '    <button class="burger" id="burger" aria-label="Menu" aria-controls="navLinks" aria-expanded="false"><span></span><span></span><span></span></button>\n'
         '  </div>\n'
         '</div></header>\n'
     ) % {"phone": PHONE, "phone_disp": "+966 56 864 6500", "email": EMAIL}
@@ -242,14 +246,13 @@ def en_footer():
         '  <div class="foot-bottom">\n'
         '    <span>© <span id="year"></span> <b>Kanaf Security Systems</b> All rights reserved.</span>\n'
         '    <span>Established <b>2024</b> — Makkah, Saudi Arabia</span>\n'
+        '    <button class="analytics-preferences" type="button" data-analytics-preferences>Analytics preferences</button>\n'
         '  </div>\n'
         '</div></footer>\n'
     ) % (svc_links, PHONE, EMAIL, EMAIL)
 
 
-EN_FLOATS = ('<a class="wa-float" href="%s" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">'
-             '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm5.4 14.2c-.23.65-1.34 1.25-1.87 1.32-.5.07-1.13.1-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.170-4.94-4.36-.14-.2-1.18-1.57-1.18-3s.75-2.12 1.02-2.41c.26-.29.58-.36.77-.36h.55c.18 0 .42-.07.65.5.24.57.8 1.97.87 2.11.07.14.12.31.02.5-.09.2-.14.31-.28.48l-.43.5c-.14.14-.29.3-.12.58.16.29.73 1.2 1.57 1.95 1.08.96 2 1.26 2.28 1.4.28.15.45.13.62-.07.16-.2.7-.82.9-1.1.19-.29.38-.24.64-.15.26.1 1.66.79 1.95.93.28.14.47.21.54.33.07.12.07.7-.16 1.35Z"/></svg></a>\n'
-             ) % WA
+EN_FLOATS = ""
 
 TOP_BTN = ('<button id="toTop" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 19V5m-7 7 7-7 7 7"/></svg></button>\n')
 
@@ -272,13 +275,13 @@ def head(lang, title, desc, keywords, canonical, og_type, icon, alternates, extr
         '<meta property="og:description" content="%(desc)s">\n'
         '<meta property="og:url" content="%(canonical)s">\n'
         '<meta name="twitter:card" content="summary">\n'
-        '%(icon)s\n%(fonts)s%(css)s%(extra_ld)s'
+        '%(icon)s\n%(preloads)s%(fonts)s%(css)s%(extra_ld)s'
         '</head>\n<body class="svc-page">\n'
     ) % {"lang": lang, "dir": "rtl" if lang == "ar" else "ltr", "title": esc(title), "desc": esc(desc),
          "keywords": esc(keywords), "canonical": canonical, "alt": alt, "og_type": og_type,
          "og_locale": "ar_SA" if lang == "ar" else "en_US",
          "site_name": "مؤسسة كنف — KANAF Systems" if lang == "ar" else "Kanaf Security Systems",
-         "icon": icon, "fonts": FONTS, "css": CSS, "extra_ld": extra_ld}
+         "icon": icon, "preloads": FONT_PRELOADS[lang], "fonts": FONTS, "css": CSS, "extra_ld": extra_ld}
 
 
 def ld(obj):
@@ -290,6 +293,7 @@ def scripts(lang):
     if lang == "en":
         s += '<script src="@@content/site-data.en.js"></script>\n'
     s += '<script src="@@assets/js/chatbot.js"></script>\n'
+    s += '<script src="@@assets/js/analytics.js" defer></script>\n'
     return s
 
 
@@ -309,7 +313,8 @@ def blocks_html(blocks):
 
 
 def alternates_for(ar_path, en_path):
-    return [("ar", SITE + "/" + ar_path), ("en", SITE + "/" + en_path)]
+    ar_url = SITE + ("/" if ar_path == "index.html" else "/" + ar_path)
+    return [("ar", ar_url), ("en", SITE + "/" + en_path)]
 
 
 # ---------------------------------------------------------------- services
@@ -408,7 +413,7 @@ def render_service(svc, lang, parts, all_services):
         '<script src="@@assets/js/site.js"></script>\n</body>\n</html>\n'
     )
     values = {
-        "sprite": parts["sprite"], "header": parts["header"], "footer": parts["footer"], "floats": parts["floats"],
+        "sprite": parts["small_sprite"], "header": parts["header"], "footer": parts["footer"], "floats": parts["floats"],
         "home": home_href, "svc": svc_href, "crumb_home": L["crumb_home"], "services": L["services"],
         "name": esc(name), "eyebrow": esc(eyebrow), "lead": esc(lead), "wa": WA, "wa_label": L["wa"],
         "phone": PHONE, "call": L["call"], "contact": ("@@en/index.html#contact" if lang == "en" else "@@index.html#contact"),
@@ -489,7 +494,7 @@ def render_post(post, lang, posts, services, parts):
     )
     more_block = ('<div class="side-card reveal d1"><h3>%s</h3><div class="mini-list">%s</div></div>' % (L["other_posts"], more)) if more else ""
     values = {
-        "sprite": parts["sprite"], "header": parts["header"], "footer": parts["footer"], "floats": parts["floats"],
+        "sprite": parts["small_sprite"], "header": parts["header"], "footer": parts["footer"], "floats": parts["floats"],
         "home": "@@en/index.html" if lang == "en" else "@@index.html", "crumb_home": L["crumb_home"],
         "list": list_href, "blog": L["blog"], "title": esc(post["title"]), "category": esc(post["category"]),
         "excerpt": esc(post["excerpt"]), "date": fmt_date(post["date"], lang), "mins": mins, "read": L["read"],
@@ -541,7 +546,7 @@ def render_blog_index(lang, posts, parts):
         '<script src="@@assets/js/site.js"></script>\n</body>\n</html>\n'
     )
     values = {
-        "sprite": parts["sprite"], "header": parts["header"], "footer": parts["footer"], "floats": parts["floats"],
+        "sprite": parts["small_sprite"], "header": parts["header"], "footer": parts["footer"], "floats": parts["floats"],
         "home": "@@en/index.html" if lang == "en" else "@@index.html", "crumb_home": L["crumb_home"],
         "blog": L["blog"], "blog_h": L["blog_h"], "blog_p": L["blog_p"], "cards": cards,
         "blog_cta_h": L["blog_cta_h"], "blog_cta_p": L["blog_cta_p"], "wa": WA, "wa_label": L["wa"],
@@ -562,7 +567,7 @@ def render_en_home():
                 "networks, camera maintenance, Kanaf")
     canonical = SITE + "/en/index.html"
     alts = alternates_for("index.html", "en/index.html")
-    local = {"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Kanaf Security Systems",
+    local = {"@context": "https://schema.org", "@type": "LocalBusiness", "@id": SITE + "/#business", "name": "Kanaf Security Systems",
              "alternateName": "KANAF Systems", "url": SITE + "/en/index.html", "inLanguage": "en",
              "telephone": PHONE, "email": EMAIL, "address": ADDRESS_EN, "areaServed": "Makkah",
              "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "23"}}
@@ -638,7 +643,7 @@ def main():
     # --- English ---
     page, path = render_en_home()
     write(path, page)
-    en_parts = {"sprite": ar_parts["sprite"], "header": "", "footer": "", "floats": EN_FLOATS, "icon": ar_parts["icon"]}
+    en_parts = {"sprite": ar_parts["sprite"], "small_sprite": ar_parts["small_sprite"], "header": "", "footer": "", "floats": "", "icon": ar_parts["icon"]}
     en_parts["header"] = en_header()
     en_parts["footer"] = en_footer()
     en_services = []

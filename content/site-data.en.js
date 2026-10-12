@@ -31,6 +31,7 @@ window.KANAF_DATA_EN = {
       sector: "Retail",
       desc: "Supply and installation of CCTV cameras and comprehensive protection for a retail sales environment.",
       shortDesc: "Supply and installation of CCTV cameras and comprehensive protection for a retail sales environment.",
+      scope: ["Supply CCTV cameras.", "Install surveillance systems in the retail environment.", "Support protection and monitoring across sales locations."],
       imageAlt: "CCTV cameras for the retail sector — Jarir Bookstore",
       tags: ["CCTV", "Protection"]
     },
@@ -41,6 +42,7 @@ window.KANAF_DATA_EN = {
       sector: "Hospitality",
       desc: "Access control gates and intercom systems for safe and smooth operation.",
       shortDesc: "Access control gates and intercom systems for safe and smooth operation.",
+      scope: ["Implement access-control gates and systems.", "Install intercom systems.", "Fit the solution to hospitality operations."],
       imageAlt: "Access control and intercom for the hospitality sector — Ajwad Hotel",
       tags: ["Access Control", "Intercom"]
     },
@@ -51,6 +53,7 @@ window.KANAF_DATA_EN = {
       sector: "Education",
       desc: "Secure surveillance coverage with data networks and internal internet.",
       shortDesc: "Secure surveillance coverage with data networks and internal internet.",
+      scope: ["Implement CCTV coverage across the site.", "Prepare data networks.", "Provide the school's internal internet infrastructure."],
       imageAlt: "CCTV and networks for the education sector — Dar Al Basheer School",
       tags: ["CCTV", "Networks"]
     },
@@ -61,6 +64,7 @@ window.KANAF_DATA_EN = {
       sector: "Industry",
       desc: "Data networks and telecom infrastructure preparation, plus surveillance systems.",
       shortDesc: "Data networks and telecom infrastructure preparation, plus surveillance systems.",
+      scope: ["Prepare data networks.", "Implement telecommunications infrastructure.", "Install surveillance systems for the industrial site."],
       imageAlt: "Networks and technical infrastructure for industry — Al Nafea Factory",
       tags: ["Networks", "Infrastructure"]
     },
@@ -71,6 +75,7 @@ window.KANAF_DATA_EN = {
       sector: "Community Organizations",
       desc: "Periodic maintenance and continuous technical support to keep systems ready and running.",
       shortDesc: "Periodic maintenance and continuous technical support to keep systems ready and running.",
+      scope: ["Provide periodic maintenance for security systems.", "Offer ongoing technical support.", "Help maintain system readiness and continuity."],
       imageAlt: "Maintenance and support contracts for security systems",
       tags: ["Maintenance", "Technical Support"]
     }

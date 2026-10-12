@@ -13,12 +13,16 @@
     if (bar) { bar.style.width = (d.scrollTop / Math.max(1, d.scrollHeight - d.clientHeight)) * 100 + "%"; }
     if (toTop) { toTop.classList.toggle("show", window.scrollY > 500); }
   }, { passive: true });
-  if (toTop) { toTop.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); }); }
+  if (toTop) { toTop.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "auto" }); }); }
 
   /* القائمة الجوالة */
   var burger = document.getElementById("burger"), menu = document.getElementById("navLinks");
   if (burger && menu) {
-    burger.addEventListener("click", function () { burger.classList.toggle("open"); menu.classList.toggle("open"); });
+    burger.addEventListener("click", function () { var opened = menu.classList.toggle("open"); burger.classList.toggle("open", opened); burger.setAttribute("aria-expanded", String(opened)); });
+    menu.querySelectorAll("a").forEach(function (link) { link.addEventListener("click", function () { menu.classList.remove("open"); burger.classList.remove("open"); burger.setAttribute("aria-expanded", "false"); }); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && menu.classList.contains("open")) { menu.classList.remove("open"); burger.classList.remove("open"); burger.setAttribute("aria-expanded", "false"); burger.focus(); } });
+    document.addEventListener("click", function (e) { if (menu.classList.contains("open") && !menu.contains(e.target) && !burger.contains(e.target)) { menu.classList.remove("open"); burger.classList.remove("open"); burger.setAttribute("aria-expanded", "false"); } });
+    window.addEventListener("resize", function () { if (window.innerWidth > 940) { menu.classList.remove("open"); burger.classList.remove("open"); burger.setAttribute("aria-expanded", "false"); } });
   }
 
   /* فلتر معرض الأعمال (في الصفحة الإنجليزية) */
@@ -67,9 +71,10 @@
 
   box.innerHTML = items.slice(0, 3).map(function (p) {
     var tags = (p.tags || []).map(function (t) { return "<span>" + esc(t) + "</span>"; }).join("");
-    var img = p.image ? '<img src="' + root + esc(p.image) + '" alt="' + esc(p.imageAlt || p.title) + '" loading="lazy" onerror="this.style.visibility=\'hidden\'">' : "";
+    var img = p.image ? '<img src="' + root + esc(p.image) + '" alt="' + esc(p.imageAlt || p.title) + '" loading="lazy" decoding="async" onerror="this.style.visibility=\'hidden\'">' : "";
+    var imageNote = p.imageIllustrative ? '<span class="pf-image-note">' + (EN ? "Temporary illustration" : "صورة توضيحية مؤقتة") + "</span>" : "";
     return '<div class="pf-card" data-cat="' + esc((p.cats || []).join(" ")) + '">' +
-      '<div class="pf-media"><span class="pf-cat">' + esc(p.sector) + "</span>" + img + "</div>" +
+      '<div class="pf-media"><span class="pf-cat">' + esc(p.sector) + "</span>" + img + imageNote + "</div>" +
       '<div class="pf-body"><h4>' + esc(p.shortTitle || p.title) + '</h4><span class="cl">' + esc(p.client) + "</span>" +
       "<p>" + esc(p.shortDesc || p.desc) + "</p>" +
       (tags ? '<div class="pf-tags">' + tags + "</div>" : "") + "</div></div>";

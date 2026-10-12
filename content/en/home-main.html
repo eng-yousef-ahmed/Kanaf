@@ -121,10 +121,10 @@
 
 <section class="pad" id="contact"><div class="container">
   <div class="sec-head reveal"><span class="sec-num">Request a quote</span><h2>Tell us your <span class="grad">requirements</span></h2><p>Fill in your details and the site information. WhatsApp will open with a ready message that we will receive directly.</p></div>
-  <form id="quoteForm" class="quote-form reveal" novalidate data-lang="en">
+  <form id="quoteForm" class="quote-form reveal" novalidate data-lang="en" aria-describedby="quoteMsg">
     <div class="qf-row">
-      <label>Full name<input name="name" type="text" required autocomplete="name"></label>
-      <label>Mobile number<input name="phone" type="tel" required dir="ltr" autocomplete="tel" placeholder="05XXXXXXXX"></label>
+      <label>Full name<input name="name" type="text" required minlength="2" maxlength="100" autocomplete="name" aria-required="true"></label>
+      <label>Mobile number<input name="phone" type="tel" required dir="ltr" autocomplete="tel" inputmode="tel" maxlength="24" placeholder="05XXXXXXXX" aria-required="true"></label>
     </div>
     <div class="qf-row">
       <label>City / location<input name="city" type="text" placeholder="e.g. Makkah — Al Hamra"></label>
